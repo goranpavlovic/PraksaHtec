@@ -1,0 +1,5 @@
+----------- FUNCTION READ START ---------------
+
+Reading program from hard disc in operating memory.
+
+----------- FUNCTION READ END ---------------

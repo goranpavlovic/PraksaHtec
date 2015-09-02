@@ -1,0 +1,7 @@
+----------- FUNCTION JUMP START ---------------
+
+This interrupt routine for system function timer.
+
+Here we do context switching.
+
+----------- FUNCTION JUMP END ---------------

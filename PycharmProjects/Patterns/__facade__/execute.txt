@@ -1,0 +1,5 @@
+----------- FUNCTION EXECUTE START ---------------
+
+Executing code in timer function.
+
+----------- FUNCTION EXECUTE END ---------------
