@@ -13,12 +13,20 @@ class Table(object):
         self.name = name
         self.description = description
         self.bind = bind
-
+    """
     @staticmethod
-    def instance():
+    def getInstance2():
         if not Table.instance:
             Table.instance = Table()
         return Table.instance
+    """
+
+    @classmethod
+    def getInstance(cls):
+        if not cls.instance:
+            cls.instance = Table()
+        return cls.instance
+
 
     @abstractmethod
     def some_operation(self):

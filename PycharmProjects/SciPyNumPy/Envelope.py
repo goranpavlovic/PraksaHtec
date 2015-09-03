@@ -34,6 +34,7 @@ pl.plot(xe, -ye, '-', color='red')
 
 pl.savefig('envelope.png')
 pl.hold(False)
+pl.show()
 
 
 
