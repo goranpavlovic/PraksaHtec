@@ -1,0 +1,7 @@
+<div>
+    <p>
+        User {{ user.firstName }} {{ user.lastName }} <br />
+        Email {{ user.email }}
+    </p>
+    <span ng-repeat-start="permission in user.permissions" >{{ permission }}</span><br ng-repeat-end />
+</div>
