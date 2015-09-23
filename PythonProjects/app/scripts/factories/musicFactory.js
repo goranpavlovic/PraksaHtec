@@ -9,6 +9,10 @@
 angular.module('pythonProjectsApp')
     .factory('musicFactory', ["$http", "SERVER", function($http, SERVER){
 
+        function Song(response){
+
+        }
+
 
         function Musician(response) {
             var self = this;
@@ -18,6 +22,11 @@ angular.module('pythonProjectsApp')
                 self.id = response.id;
                 self.first = response.first;
                 self.last = response.last;
+                /*
+                self.songs = [];
+                for item in songs
+                    songs.append(new Song())
+                    */
             };
             self.parse();
         }
@@ -32,11 +41,12 @@ angular.module('pythonProjectsApp')
             return new Musician(response);
         }
 
-        function get_info() {
+        function get_info(id) {
             return $http({
                 method : 'GET',
                 url: SERVER + "get-musician/?format=json&id=" + id
             }).then(function(response){
+                alert("----- GO -----");
                 return new Musician(response);
             }, function(){
                 alert("Error");
@@ -45,6 +55,6 @@ angular.module('pythonProjectsApp')
 
         return {
             getMusician : getMusician,
-            getInfo : get_info
+            get_info : get_info
         }
 }]);

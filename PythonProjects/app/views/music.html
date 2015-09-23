@@ -9,13 +9,13 @@
         <form><br><br>
             <legend>MUSICIANS</legend>
             ID: <br>
-            <input type="text" ng-model="music.musicContext.musician.id"><br>
+            <input type="text" ng-model="music.musicQuery.id"><br>
             First Name: <br>
             <input type="text" ng-model="music.musicContext.musician.first"><br>
             Last Name: <br>
             <input type="text" ng-model="music.musicContext.musician.last"><br><br>
             <button ng-click="music.get_info()">GET INFO</button><br>
-            <textarea rows="20" cols="50">{{ music.musicContext.musician.first }}</textarea>
+            <textarea rows="20" cols="50">{{ music.musicianContext.musician }}</textarea>
         </form>
     </div>
 </body>

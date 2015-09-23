@@ -11,8 +11,14 @@ angular.module('pythonProjectsApp').service('MusicService', ["$http", "musicFact
 
     self.musicContext = { musician : null };
 
-    self.get_info = function () {
-        self.musicContext.musician = musicFactory.get_info();
+    self.musicianContext = { musician : null };
+
+    self.get_info = function (id) {
+        //self.musicContext.musician = musicFactory.get_info();
+        musicFactory.get_info(id).then(function(data){
+            self.musicContext.musician = data;
+            self.musicianContext.musician = data.getContent();
+        });
     }
 
 

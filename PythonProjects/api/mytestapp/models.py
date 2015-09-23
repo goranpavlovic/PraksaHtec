@@ -1,5 +1,3 @@
-from django.db import models
-
 # Create your models here.
 from django.db import models
 
@@ -36,3 +34,6 @@ class Song(models.Model):
     album = models.ForeignKey(Album)
     name = models.CharField(max_length=50)
     duration = models.TimeField(null=True)
+
+
+

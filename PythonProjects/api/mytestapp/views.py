@@ -144,7 +144,7 @@ class MusicianInfo(APIView):
         if musician_id is None:
             return Response(status=status.HTTP_400_BAD_REQUEST, data="Musician with this id doesn't exist")
         #objects = Musician.objects.filter(id_).order_by('release_date')
-        musician = Musician.objects.get(pk=musician_id)
+        musician = get_object_or_404(Musician, pk=musician_id)
         serializer = MusicSerializer(musician)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
 
