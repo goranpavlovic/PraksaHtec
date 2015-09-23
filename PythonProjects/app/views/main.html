@@ -23,28 +23,6 @@
     </form>
 </div>
 
-<div> <br><br>
-    <form>
-        <legend>FACTORIAL</legend>
-        Number: <br>
-        <input type="text" ng-model="factorials.factContext.number"><br>
-        Result: <br>
-        <input type="text" ng-model="factorials.factContext.result"><br><br>
-        <button ng-repeat="op in factorials.factContext.operations"
-                ng-click="factorials.factorialsFunc(op.id)">{{ op.name }}</button>
-    </form>
-</div>
 
-<div>
-    <form><br><br>
-        <legend>MUSICIANS</legend>
-        ID: <br>
-        <input type="text"><br>
-        First Name: <br>
-        <input type="text"><br>
-        Last Name: <br>
-        <input type="text"><br><br>
-        <button ng-click="music.get_info()">GET INFO</button><br>
-        <textarea rows="20" cols="50"></textarea>
-    </form>
-</div>
+
+

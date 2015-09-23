@@ -24,8 +24,8 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/', {
-        templateUrl: 'views/main.html',
+      .when('/factorial', {
+        templateUrl: 'views/fact.html',
         controller: 'FactorialCtrl',
         controllerAs: 'factorials'
       })
@@ -33,6 +33,11 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/music', {
+        templateUrl: 'views/music.html',
+        controller: 'MusicCtrl',
+        controllerAs: 'music'
       })
       .otherwise({
         redirectTo: '/'

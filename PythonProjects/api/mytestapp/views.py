@@ -7,35 +7,35 @@ import json
 # Create your views here.
 
 
-# class GetUser(APIView):
-#
-#     def get(self, request, format=None):
-#
-#         id = request.GET.get('id')
-#
-#         data = {
-#             "firstName": 'John',
-#             "lastName": 'Doe',
-#             "email": "john.doe@gmail.com",
-#             "permissions": ["can_add_record", "can_edit_record", "can_delete_record"],
-#         }
-#
-#         print "--------------getting user: " + str(id) + "-------"
-#
-#         return Response(data=data, status=status.HTTP_200_OK)
-#
-#     def post(self, request, format=None):
-#
-#         id = request.POST.get('id')
-#         email = request.POST.get('email')
-#
-#         #user = get_object_or_404(User, pk=request.POST.get('id'))
-#         #user.email = request.POST.get('email')
-#
-#         print "--------------saving user: " + str(id) + "-------"
-#         print "--------------saving user: " + str(email) + "-------"
-#
-#         return Response(data={'status': 'success'}, status=status.HTTP_200_OK)
+class GetUser(APIView):
+
+    def get(self, request, format=None):
+
+        id = request.GET.get('id')
+
+        data = {
+            "firstName": 'John',
+            "lastName": 'Doe',
+            "email": "john.doe@gmail.com",
+            "permissions": ["can_add_record", "can_edit_record", "can_delete_record"],
+        }
+
+        print "--------------getting user: " + str(id) + "-------"
+
+        return Response(data=data, status=status.HTTP_200_OK)
+
+    def post(self, request, format=None):
+
+        id = request.POST.get('id')
+        email = request.POST.get('email')
+
+        #user = get_object_or_404(User, pk=request.POST.get('id'))
+        #user.email = request.POST.get('email')
+
+        print "--------------saving user: " + str(id) + "-------"
+        print "--------------saving user: " + str(email) + "-------"
+
+        return Response(data={'status': 'success'}, status=status.HTTP_200_OK)
 
 from django.shortcuts import render
 

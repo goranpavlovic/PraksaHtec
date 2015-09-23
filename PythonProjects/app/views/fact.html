@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div> <br><br>
+        <form>
+            <legend>FACTORIAL</legend>
+            Number: <br>
+            <input type="text" ng-model="factorials.factContext.number"><br>
+            Result: <br>
+            <input type="text" ng-model="factorials.factContext.result"><br><br>
+            <button ng-repeat="op in factorials.factContext.operations"
+                    ng-click="factorials.factorialsFunc(op.id)">{{ op.name }}</button>
+        </form>
+    </div>
+</body>
+</html>
