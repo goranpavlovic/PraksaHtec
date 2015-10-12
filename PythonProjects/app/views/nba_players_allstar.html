@@ -11,7 +11,7 @@
             <div id="left">
                 <p2>Player ID:</p2>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaQuery.first_name">
                 <br>
                 <p2>First Name:</p2>
                 <br>
@@ -37,7 +37,7 @@
 
                 <!-- Drop-down menu - points mode -->
                 <div id="mode">
-                    <ul>
+                    <!--ul>
                         <li>
                             <a href="#">.</a>
                             <ul>
@@ -47,8 +47,10 @@
                                 <li><a href="#">lte</a></li>
                                 <li><a href="#">eq</a></li>
                             </ul>
+
                         </li>
-                    </ul>
+                    </ul-->
+                    <select ng-model="nba.selectedMode" ng-options="item for item in nba.playerMods" ></select>
                 </div>
 
                 <br> <br>

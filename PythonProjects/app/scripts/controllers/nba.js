@@ -94,4 +94,12 @@ angular.module('pythonProjectsApp')
          *  Third form - All-Star table
          */
 
+        self.playerMods = [
+            'gt',
+            'gte',
+            'lt',
+            'lte',
+            'eq'
+        ];
+
   }]);
