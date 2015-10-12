@@ -1,0 +1,114 @@
+<!--
+    Field ALL-STAR from drop-down menu
+-->
+<div id="header_home3">
+    <br><br>
+    <ng-form>
+        <fieldset id="form">
+            <legend id="form">
+                <p1>Players All-Star Statistics</p1>
+            </legend>
+            <div id="left">
+                <p2>Player ID:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br>
+                <p2>First Name:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br>
+                <p2>Last Name:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br> <br>
+            </div>
+            <div id="left">
+                <p2>Conference:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br>
+                <p2>Year:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br>
+                <p2>Points:</p2>
+                <br>
+                <input type="text" ng-model="">
+
+                <!-- Drop-down menu - points mode -->
+                <div id="mode">
+                    <ul>
+                        <li>
+                            <a href="#">.</a>
+                            <ul>
+                                <li><a href="#">gt</a></li>
+                                <li><a href="#">gte</a></li>
+                                <li><a href="#">lt</a></li>
+                                <li><a href="#">lte</a></li>
+                                <li><a href="#">eq</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <br> <br>
+            </div>
+            <div id="left">
+                <p2>Rebounds:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br>
+                <p2>Assists:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br>
+                <p2>Blocks:</p2>
+                <br>
+                <input type="text" ng-model="">
+                <br> <br>
+            </div>
+            <div id="button_style">
+                <button ng-click="nba.getPlayersInfo()">GET PLAYERS</button>
+                <button>CLEAR ALL</button>
+            </div>
+        </fieldset>
+    </ng-form>
+</div>
+<br> <br>
+<!-- Table -->
+<div id="table_style" ng-show="">
+    <table>
+        <tr>
+            <th>Player ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Year</th>
+            <th>Conference</th>
+            <th>Minutes</th>
+            <th>Points</th>
+            <th>Offensive rebounds</th>
+            <th>Defensive rebounds</th>
+            <th>Rebounds</th>
+            <th>Assists</th>
+            <th>Steals</th>
+            <th>Blocks</th>
+            <th>Turnovers</th>
+        </tr>
+        <tr class="alt">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

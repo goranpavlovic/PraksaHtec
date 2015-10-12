@@ -3,7 +3,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 import json
-
 # Create your views here.
 
 
@@ -148,6 +147,32 @@ class MusicianInfo(APIView):
         serializer = MusicSerializer(musician)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
 
+    def post(self, request, format=None):
+        id = request.POST.get(u'id')
+        first_name = request.POST.get(u'first_name')
+        last_name = request.POST.get(u'last_name')
+        instrument = request.POST.get(u'instrument')
+        age = request.POST.get(u'age')
+        country = request.POST.get(u'country')
+        if id is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data="Musician with this id doesn't exist")
+
+        musician = get_object_or_404(Musician, pk=id)
+        if first_name is not None:
+            musician.first_name = first_name
+        if last_name is not None:
+            musician.last_name = last_name
+        if instrument is not None:
+            musician.instrument = instrument
+        if age is not None:
+            musician.age = age
+        if country is not None:
+            musician.country = country
+
+        musician.save()
+        serializer = MusicSerializer(musician)
+        return Response(status=status.HTTP_200_OK, data=serializer.data)
+
 
 class SongInfo(APIView):
 
@@ -213,5 +238,265 @@ class SongViewSet(viewsets.ViewSet):
         longest_songs = Song.objects.filter(duration__lt='00:03:00')
         longest_songs = longest_songs.order_by('duration')
         serializer = SongSerializer(longest_songs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# --------------------------------------------------------------------------
+# ------------------------------ BASKETBALL --------------------------------
+# --------------------------------------------------------------------------
+
+from mytestapp.models import Players, PlayersAllStar, PlayersCareer, Teams,\
+                             TeamSeason, Coaches, CoachesCareer, PlayersPlayOff, \
+                             PlayersRegularSeason, PlayersImage
+
+from mytestapp.serializers import PlayersSerializer, PlayersRegularSeasonSerializer, \
+                                  PlayersPlayoffSerializer, PlayersAllStarSerializer, PlayerImageSerializer
+
+
+class PlayersView(APIView):
+    def get(self, request, format=None):
+        player_id = request.GET.get(u'id')
+        player_first_season = request.GET.get(u'first')
+        if player_id is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data="Player with this id doesn't exist.")
+        player = get_object_or_404(Players, pk=player_id)
+        serializer = PlayersSerializer(player)
+        serializer_2 = None
+
+        if player_first_season is not None:
+            # if type(player_first_season) == int:
+            #     objects = Players.objects.all().get(pk=player_first_season)
+                objects = Players.objects.all().filter(first_season__gt=player_first_season)
+                serializer_2 = PlayersSerializer(objects, many=True)
+
+        if serializer_2 is None:
+            return Response(serializer.data, status.HTTP_200_OK)
+        else:
+            return Response([serializer.data, serializer_2.data],  status.HTTP_200_OK)
+
+    def post(self, request, format=None):
+        pass
+
+
+class PlayersViewTwo(APIView):
+    # Here we make get method which can retrieve list of desired data
+    def get(self, request, format=None):
+        player_id = request.GET.get(u'player_id')
+        first_name = request.GET.get(u'first_name')
+        last_name = request.GET.get(u'last_name')
+        position = request.GET.get(u'position')
+        first_season = request.GET.get(u'first_season')
+        last_season = request.GET.get(u'last_season')
+
+        # Get all rows from table Players
+        objects = Players.objects.all()
+
+        # Filtering table by id, name, position, season
+        if player_id is not None:
+            objects = objects.filter(pk=player_id)
+        if first_name is not None:
+            objects = objects.filter(first_name=first_name)
+        if last_name is not None:
+            objects = objects.filter(last_name=last_name)
+        if position is not None:
+            objects = objects.filter(position=position)
+        if first_season is not None:
+            objects = objects.filter(first_season=first_season)
+        if last_season is not None:
+            objects = objects.filter(last_season=last_season)
+
+        serializer = PlayersSerializer(objects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PlayersRegularSeasonView(APIView):
+    def get(self, request, format=None):
+        player_id = request.GET.get(u'player_id')
+        if player_id is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data="Player with this id doesn't exist.")
+
+        objects = PlayersRegularSeason.objects.filter(player_id=player_id)
+        serializer = PlayersRegularSeasonSerializer(objects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PlayersPlayoffView(APIView):
+    def get(self, requet, format=None):
+        player_id = requet.GET.get(u'player_id')
+        if player_id is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data="Player with this id doesn't exist.")
+
+        objects = PlayersPlayOff.objects.filter(player_id=player_id)
+        serializer = PlayersPlayoffSerializer(objects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PlayersAllStarView(APIView):
+    #  Auxiliary method for statistics modes
+    def compare(self, mode):
+        if mode == 'gt' or mode == 'lt' or mode == 'eq' or\
+           mode == 'gte' or mode == 'lte':
+            return True
+        else:
+            return False
+
+    def get(self, request, format=None):
+        player_id = request.GET.get(u'player_id')
+        first_name = request.GET.get(u'first_name')
+        last_name = request.GET.get(u'last_name')
+        conference = request.GET.get(u'conference')
+        year = request.GET.get(u'year')
+        points = request.GET.get(u'points')
+        rebounds = request.GET.get(u'rebounds')
+        assists = request.GET.get(u'assists')
+        blocks = request.GET.get(u'blocks')
+
+        #   Modes for points, rebounds, assists, blocks
+        #   GREATER, LESS, EQUALS, GREATER or EQUALS, LESS or EQUALS
+        #   gt, lt, eq, gte, lte
+
+        pts_mode = request.GET.get(u'pts_mode')
+        reb_mode = request.GET.get(u'reb_mode')
+        ast_mode = request.GET.get(u'ast_mode')
+        blk_mode = request.GET.get(u'blk_mode')
+
+        # Get all objects, all rows from Table All-Star
+        objects = PlayersAllStar.objects.all()
+
+        # Checking parameter points
+        if points is not None:
+            # If user put some value for parameter points, he must check the mode
+            # if mode is checked
+            if pts_mode is not None:
+                # in case when mode take incorrect value
+                # we show the message about error
+                if self.compare(pts_mode) is False:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter points.")
+
+                # here, we have correct value and correct mode
+                else:
+                    if pts_mode == 'gt':
+                        objects = objects.filter(points__gt=points)
+                    elif pts_mode == 'gte':
+                        objects = objects.filter(points__gte=points)
+                    elif pts_mode == 'lt':
+                        objects = objects.filter(points__lt=points)
+                    elif pts_mode == 'lte':
+                        objects = objects.filter(points__lte=points)
+                    else:
+                        objects = objects.filter(points=points)
+
+            # if mode isn't checked
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Check mode for points")
+
+        # Checking parameter rebounds
+        if rebounds is not None:
+            # Checked mode
+            if reb_mode is not None:
+                # Invalid mode
+                if self.compare(reb_mode) is False:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter rebounds.")
+
+                # Correct mode
+                else:
+                    if reb_mode == 'gt':
+                        objects = objects.filter(rebounds__gt=rebounds)
+                    elif reb_mode == 'gte':
+                        objects = objects.filter(rebounds__gte=rebounds)
+                    elif reb_mode == 'lt':
+                        objects = objects.filter(rebounds__lt=rebounds)
+                    elif reb_mode == 'lte':
+                        objects = objects.filter(rebounds__lte=rebounds)
+                    else:
+                        objects = objects.filter(rebounds=rebounds)
+
+            # Not checked mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Check mode for rebounds")
+
+        # Checking parameter assists
+        if assists is not None:
+            # Checked mode
+            if ast_mode is not None:
+                # Invalid mode
+                if self.compare(ast_mode) is False:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter assists.")
+
+                # Correct mode
+                else:
+                    if ast_mode == 'gt':
+                        objects = objects.filter(assists__gt=assists)
+                    elif ast_mode == 'gte':
+                        objects = objects.filter(assists__gte=assists)
+                    elif ast_mode == 'lt':
+                        objects = objects.filter(assists__lt=assists)
+                    elif ast_mode == 'lte':
+                        objects = objects.filter(assists__lte=assists)
+                    else:
+                        objects = objects.filter(assists=assists)
+
+            # Not checked mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Check mode for rebounds")
+
+        # Checking parameter blocks
+        if blocks is not None:
+            # Checked mode
+            if blk_mode is not None:
+                # Invalid mode
+                if self.compare(blk_mode) is False:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter blocks.")
+
+                # Correct mode
+                else:
+                    if blk_mode == 'gt':
+                        objects = objects.filter(blocks__gt=blocks)
+                    elif blk_mode == 'gte':
+                        objects = objects.filter(blocks__gte=blocks)
+                    elif blk_mode == 'lt':
+                        objects = objects.filter(blocks__lt=blocks)
+                    elif blk_mode == 'lte':
+                        objects = objects.filter(blocks__lte=blocks)
+                    else:
+                        objects = objects.filter(blocks=blocks)
+            # Not checked mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Check mode for rebounds")
+
+        if player_id is not None:
+            objects = objects.filter(all_player=player_id)
+        if first_name is not None:
+            objects = objects.filter(first_name=first_name)
+        if last_name is not None:
+            objects = objects.filter(last_name=last_name)
+
+        if conference is not None:
+            # Here we check name of conference
+            # Invalid conference name, return message error
+            if conference != 'east' and conference != 'west':
+                return Response(status=status.HTTP_400_BAD_REQUEST,
+                                data="You must put 'east' or 'west' for parameter conference.")
+
+            # Correct conference name, filtering my conference
+            else:
+                objects = objects.filter(conference=conference)
+
+        if year is not None:
+            objects = objects.filter(all_star_year=year)
+
+        serializer = PlayersAllStarSerializer(objects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PlayersImageView(APIView):
+    def get(self, request, format=None):
+        player_id = request.GET.get(u'player_id')
+        image = PlayersImage.objects.all().filter(player_id=player_id)
+        serializer = PlayerImageSerializer(image, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

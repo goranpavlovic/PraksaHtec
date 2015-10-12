@@ -16,6 +16,7 @@ angular.module('pythonProjectsApp').factory('userFactory', ["$http", "SERVER", f
 
         userPtr.parseJsonString = function(){
             userPtr.id = 10;
+            userPtr.firstName = userPtr.response.firstName;
             userPtr.lastName = userPtr.response.lastName;
             userPtr.email = userPtr.response.email;
             userPtr.permissions = userPtr.response.permissions;

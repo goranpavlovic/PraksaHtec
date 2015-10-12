@@ -5,6 +5,21 @@
     <title></title>
 </head>
 <body>
+    <style type="text/css">
+        p1 {
+            font-family: "Courier New", courier, monospace;
+            color: #0000cc;
+        }
+        p2 {
+            font-family: "Courier New", courier, monospace;
+            color: #114400;
+        }
+        p3 {
+            font-family: "Courier New", courier, monospace;
+            color: #A00000;
+        }
+
+    </style>
     <div>
         <form><br><br>
             <legend>MUSICIANS</legend>
@@ -15,7 +30,83 @@
             Last Name: <br>
             <input type="text" ng-model="music.musicContext.musician.last"><br><br>
             <button ng-click="music.get_info()">GET INFO</button><br>
-            <textarea rows="20" cols="50">{{ music.musicianContext.musician }}</textarea>
+            <ul>
+                <h2>{{ music.musicContext.musician.first }} {{ music.musicContext.musician.last }}</h2>
+                <li><p1>id: </p1>{{ music.musicContext.musician.id }}</li>
+                <li>
+                    <p1>name: </p1>
+                    <input  ng-if="music.editMode" ng-model="music.musicContext.musician.first">
+                    <span ng-if="!music.editMode">{{ music.musicContext.musician.first }}</span>
+                </li>
+                <li>
+                    <p1>last name: </p1>
+                    <input ng-if="music.editMode" ng-model="music.musicContext.musician.last">
+                    <span ng-if="!music.editMode">{{ music.musicContext.musician.last }}</span>
+                </li>
+                <li>
+                    <p1>instrument: </p1>
+                    <input ng-if="music.editMode" ng-model="music.musicContext.musician.instrument">
+                    <span ng-if="!music.editMode">{{ music.musicContext.musician.instrument }}</span>
+                </li>
+                <li>
+                    <p1>age: </p1>
+                    <input ng-if="music.editMode" ng-model="music.musicContext.musician.age">
+                    <span ng-if="!music.editMode">{{ music.musicContext.musician.age }}</span>
+                </li>
+                <li>
+                    <p1>country: </p1>
+                    <input ng-if="music.editMode" ng-model="music.musicContext.musician.country">
+                    <span ng-if="!music.editMode">{{ music.musicContext.musician.country }}</span>
+                </li>
+                <li>
+                    <p><p1>albums: </p1></p>
+                    <ul ng-repeat="album in music.musicContext.musician.albums">
+                        <li><p2>id: </p2>{{ album.id }}</li>
+                        <li><p2>artist: </p2>{{ album.artist }}</li>
+                        <li><p2>name: </p2>{{ album.name }}</li>
+                        <li><p2>release_date: </p2>{{ album.release_date }}</li>
+                        <li><p2>num_stars: </p2>{{ album.num_stars }}</li>
+                        <li>
+                            <p><p2>production house:</p2></p>
+                            <ul>
+                                <li><p3>id: </p3><input ng-model="album.production_house.id"></li>
+                                <li><p3>name: </p3>{{ album.production_house.name }}</li>
+                                <li><p3>director: </p3>{{ album.production_house.director }}</li>
+                                <li><p3>founded: </p3>{{ album.production_house.founded }}</li>
+                                <li><p3>budget: </p3>{{ album.production_house.budget }}</li>
+                            </ul>
+                            <p>
+                                <button>EDIT</button>
+                                <button>SAVE</button>
+                            </p>
+                        </li>
+                        <li>
+                            <p><p2>songs: </p2></p>
+                            <ul ng-repeat="song in album.songs">
+                                <li><p3>id: </p3>{{ song.id }}</li>
+                                <li><p3>name: </p3>{{ song.name }}</li>
+                                <li><p3>duration: </p3>{{ song.duration }}</li>
+                                <p>
+                                    <button ng-click="music.saveSong(song)">EDIT</button>
+                                    <button>SAVE</button>
+                                </p>
+                                <p> ------------------------------------- </p>
+                            </ul>
+                        </li>
+                        <li><p2>duration_of_album: </p2>{{ album.duration_of_album }}</li>
+                        <li><p2>num_of_songs: </p2>{{ album.num_of_songs }}</li>
+                        <p>
+                            <button>EDIT</button>
+                            <button>SAVE</button>
+                        </p>
+                        <p> ==================================== </p>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                <button ng-click="music.setEditMode()">EDIT</button>
+                <button ng-click="music.save_info()">SAVE</button>
+            </p>
         </form>
     </div>
 </body>

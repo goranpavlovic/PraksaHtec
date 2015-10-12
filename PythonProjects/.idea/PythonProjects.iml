@@ -16,6 +16,8 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 2.7.6 virtualenv at ~/Documents/PraksaHtec/PythonProjects/api/pythonenv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="Basketball" />
+    <orderEntry type="module" module-name="stats" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

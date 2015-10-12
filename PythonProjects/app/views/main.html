@@ -1,6 +1,6 @@
 <my-user user="main.context.user" ></my-user>
-<p>
-    Name: <input ng-disabled="!main.editMode" type="text" ng-model="main.context.user.firstName" /><br />
+<p>{{ main.context.user.firstName }}
+    Name: <span ng-if="!main.editMode">{{ main.context.user.firstName }}</span><input ng-if="main.editMode" type="text" ng-model="main.context.user.firstName" /><br />
     Surname: <input ng-disabled="!main.editMode" type="text" ng-model="main.context.user.lastName" />
     <button  ng-if="!main.editMode" ng-click="main.editClicked()" >Edit</button>
     <button ng-if="main.editMode" ng-click="main.saveClicked()" >Save</button>

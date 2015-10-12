@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from mytestapp.views import GetUser, MusicianInfo
+from mytestapp.views import GetUser, MusicianInfo, PlayersView, PlayersViewTwo,\
+                            PlayersRegularSeasonView, PlayersPlayoffView, PlayersAllStarView, PlayersImageView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^get-user/', GetUser.as_view()),
     url(r'^get-musician/', MusicianInfo.as_view()),
+    url(r'^get-player/', PlayersView.as_view()),
+    url(r'^get-players/', PlayersViewTwo.as_view()),
+    url(r'^get-regular/', PlayersRegularSeasonView.as_view()),
+    url(r'^get-playoff/', PlayersPlayoffView.as_view()),
+    url(r'^get-allstar', PlayersAllStarView.as_view()),
+    url(r'^get-image', PlayersImageView.as_view())
 ]

@@ -1,0 +1,347 @@
+@charset "utf-8";
+
+#header_home {
+    background-image: url("images/michael-jordan1.jpg");
+    background-size: cover;
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 120%;
+    font-stretch: normal;
+    width: 440px;
+}
+
+#header_home3 {
+    background-image: url("images/michael-jordan1.jpg");
+    background-size: cover;
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 120%;
+    font-stretch: normal;
+    width: 650px;
+}
+
+#header_home_2 {
+    background-color: #000088;
+    font-size: 100%;
+    font-family: Verdana, Arial, helvetica, sans-serif;
+    font-weight: 800;
+    color: #d8d8d8;
+    margin: 0;
+    padding: 0;
+}
+
+#header_home_2 ul {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    text-align: center;
+    /*list-style: none;*/
+    /*float: left;*/
+    /*position: relative;*/
+    /*line-height: 30px;*/
+}
+
+#header_home_2 li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    position: relative;
+    background: #d8d8d8;
+}
+
+#header_home_2 ul li a {
+    text-align: center;
+    font-family: Verdana, Arial, helvetica, sans-serif;
+    text-decoration: none;
+    height: 30px;
+    width: 150px;
+    display: block;
+    color: #101010;
+    /*border: solid #880000;*/
+}
+
+#header_home_2 ul ul {
+    position: absolute;
+    visibility: hidden;
+    top: 30px;
+}
+
+#header_home_2 ul li:hover ul {
+    visibility: visible;
+}
+
+#header_home_2 li:hover {
+    background: #880000;
+}
+
+#header_home_2 ul li:hover ul li a:hover {
+    background: #000066;
+    color: #ffffff;
+}
+
+body {
+    margin: 0;
+}
+.header {
+    width: 100%;
+    height: auto;
+    background-color: #909090;
+    padding-top: 24px;
+}
+.headerContent {
+    width: 1024px;
+    height: auto;
+    margin: 0 auto;
+}
+.headerContent a img {
+    width: 659px;
+    height: 144px;
+    margin: 0px auto;
+    display: block;
+}
+.nav {
+    margin-top: 20px;
+    height: 40px;
+    background: #000088;
+}
+.nav ul {
+    margin: 0;
+    padding: 0;
+}
+.nav ul li {
+    list-style: none;
+}
+.nav ul li a {
+    text-decoration: none;
+    float: left;
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    font-stretch: normal;
+}
+.nav ul li a:hover {
+    color: white;
+}
+.headerBreak {
+    width: 100%;
+    height: 0;
+    border-bottom: 2px solid #ffffff;
+}
+
+p1 {
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 70%;
+    padding: 2px 10px;
+    /*border: #d8d8d8;*/
+    border: double;
+}
+
+p2 {
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 50%;
+    padding-top: 5px;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 5px;
+}
+
+#table_style {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#table_style td, #table_style th {
+    font-size: 1em;
+    border: 1px solid #000066;
+    padding: 3px 7px 2px 7px;
+}
+
+#table_style th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #000066;
+    color: #ffffff;
+}
+
+#table_style tr.alt td {
+    color: #000000;
+    background-color: #0b97c4;
+}
+
+#left {
+    position: relative;
+    float: left;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+#right {
+    position: relative;
+    float: right;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+#form {
+    background-color: #880000;
+    color: #ffffff;
+}
+
+#playerStatistics {
+    width: 500px;
+    background-color: #000000;
+}
+
+#imageDiv {
+    float: left;
+    position: relative;
+    padding-top: 20px;
+}
+
+#dataDiv {
+    float: left;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    font-weight: 500;
+    align-content: flex-start;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+p3 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 60%;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+p4 {
+    color: #31b0d5;
+    font-size: 70%;
+    padding-left: 10px;
+}
+
+#FIRST {
+    position: relative;
+    float: left;
+    padding-left: 30px;
+}
+
+#SECOND {
+    position: relative;
+    float: left;
+}
+
+#SECOND div {
+    position: relative;
+    float: left;
+}
+
+#table_style2 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#table_style2 td, #table_style2 th {
+    font-size: 0.4em;
+    border: 1px solid #000066;
+    padding: 3px 7px 2px 7px;
+}
+
+#table_style2 th {
+    font-size: 0.5em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #000066;
+    color: #ffffff;
+}
+
+#table_style2 tr.alt td {
+    color: #000000;
+    background-color: #0b97c4;
+}
+
+#THIRD {
+    position: relative;
+    float: left;
+}
+
+p5 {
+    color: #ffffff;
+    font-size: 80%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#radio_style {
+    position: relative;
+    float: left;
+    padding-left: 250px;
+}
+
+#button_style {
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+#mode {
+    background-color: #000088;
+    font-size: 50%;
+    font-family: Verdana, Arial, helvetica, sans-serif;
+    font-weight: 800;
+    color: #d8d8d8;
+    margin: 0;
+    padding: 0;
+}
+
+#mode ul {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    text-align: center;
+}
+
+#mode li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    position: relative;
+    background: #d8d8d8;
+}
+
+#mode ul li a {
+    text-align: center;
+    font-family: Verdana, Arial, helvetica, sans-serif;
+    text-decoration: none;
+    height: 20px;
+    width: 10px;
+    display: block;
+    color: #101010;
+}
+
+#mode ul ul {
+    position: absolute;
+    visibility: hidden;
+    top: 30px;
+}
+
+#mode ul li:hover ul {
+    visibility: visible;
+}
+
+#mode li:hover {
+    background: #880000;
+}
+
+#mode ul li:hover li a:hover {
+    background: #000066;
+    color: #ffffff;
+}

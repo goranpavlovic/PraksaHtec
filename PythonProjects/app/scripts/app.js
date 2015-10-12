@@ -19,7 +19,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
@@ -39,6 +39,26 @@ angular
         controller: 'MusicCtrl',
         controllerAs: 'music'
       })
+      .when('/nba', {
+          templateUrl: 'views/nba.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaPlayersAll', {
+          templateUrl: 'views/nba_players_all.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaCareer', {
+          templateUrl: 'views/nba_players_career.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaAllStar', {
+          templateUrl: 'views/nba_players_allstar.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
       .otherwise({
         redirectTo: '/'
       });

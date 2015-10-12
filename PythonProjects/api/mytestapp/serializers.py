@@ -123,3 +123,61 @@ class SongSerializerTwo(serializers.ModelSerializer):
 class NameSerializer(serializers.Serializer):
 
     name = serializers.CharField(max_length=50)
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------- BASKETBALL -----------------------------------------
+# --------------------------------------------------------------------------------------
+
+from models import Players, PlayersCareer, PlayersRegularSeason, PlayersPlayOff, PlayersAllStar, PlayersImage
+
+
+class PlayersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Players
+        fields = ('player_id', 'first_name', 'last_name', 'position', 'first_season',
+                  'last_season', 'height_feet', 'height_inches', 'weight', 'college',
+                  'birth_date')
+
+
+class PlayersStatisticsSerializer(serializers.ModelSerializer):
+    pass
+
+
+class PlayersCareerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlayersCareer
+        fields = ('player_id', 'first_name', 'last_name', 'games_played', 'minutes', 'points',
+                  'off_rebounds', 'def_rebounds', 'rebounds', 'assists', 'steals', 'blocks', 'turnovers')
+
+
+class PlayersCareerStatisticsSerializer(serializers.ModelSerializer):
+    pass
+
+
+class PlayersAllStarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlayersAllStar
+        fields = ('all_star_year', 'all_player', 'first_name', 'last_name', 'conference',
+                  'minutes', 'points', 'off_rebounds', 'def_rebounds', 'rebounds',
+                  'assists', 'steals', 'blocks', 'turnovers')
+
+
+class PlayersRegularSeasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlayersRegularSeason
+        fields = ('player_id', 'first_name', 'last_name', 'year', 'team', 'games_played', 'minutes', 'points',
+                  'off_rebounds', 'def_rebounds', 'rebounds', 'assists', 'steals', 'blocks', 'turnovers')
+
+
+class PlayersPlayoffSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlayersPlayOff
+        fields = ('player_id', 'first_name', 'last_name', 'year', 'team', 'games_played', 'minutes', 'points',
+                  'off_rebounds', 'def_rebounds', 'rebounds', 'assists', 'steals', 'blocks', 'turnovers')
+
+
+class PlayerImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlayersImage
+        fields = ('player_id', 'image')

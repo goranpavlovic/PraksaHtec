@@ -1,0 +1,166 @@
+<!--
+        Field ALL from drop-down menu
+
+        Form for selecting data about players
+        We can put player id, name, first and last separately,
+        position, his first and his last season in NBA
+
+        This is statistic for all players in database, also we can select players
+        from the Career table and the All-Star table
+    -->
+<div id="header_home">
+    <br><br>
+    <ng-form>
+        <fieldset id="form">
+            <legend id="form">
+                <p1>All Players Statistics</p1>
+            </legend>
+            <div id="left">
+                <p2>Player ID:</p2>
+                <br>
+                <input type="text" ng-model="nba.nbaQuery.id">
+                <br>
+                <p2>First Name:</p2>
+                <br>
+                <input type="text" ng-model="nba.nbaQuery.first_name">
+                <br>
+                <p2>Last Name:</p2>
+                <br>
+                <input type="text" ng-model="nba.nbaQuery.last_name">
+                <br> <br>
+            </div>
+            <div id="right">
+                <p2>Position:</p2>
+                <br>
+                <input type="text" ng-model="nba.nbaQuery.position">
+                <br>
+                <p2>First season:</p2>
+                <br>
+                <input type="text" ng-model="nba.nbaQuery.first_season">
+                <br>
+                <p2>Last season:</p2>
+                <br>
+                <input type="text" ng-model="nba.nbaQuery.last_season">
+                <br> <br>
+            </div>
+            <div id="button_style">
+                <button ng-click="nba.getPlayersInfo()">GET PLAYERS</button>
+                <button>CLEAR ALL</button>
+            </div>
+        </fieldset>
+    </ng-form>
+</div>
+<br> <br>
+<!-- Table with all players with entered parameters-->
+<div id="table_style" ng-show="nba.showResult">
+    <table>
+        <tr>
+            <th>Player ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+            <th>First Season</th>
+            <th>Last Season</th>
+            <th>Height (feet)</th>
+            <th>Height (inches)</th>
+            <th>Weight (pounds)</th>
+            <th>College</th>
+            <th>Birth date</th>
+        </tr>
+        <tr ng-repeat="player in nba.players" class="alt" ng-click="nba.setPlayer(player)">
+            <td>{{ player.player_id }}</td>
+            <td>{{ player.first_name }}</td>
+            <td>{{ player.last_name }}</td>
+            <td>{{ player.position }}</td>
+            <td>{{ player.first_season }}</td>
+            <td>{{ player.last_season }}</td>
+            <td>{{ player.height_feet }}</td>
+            <td>{{ player.height_inches }}</td>
+            <td>{{ player.weight }}</td>
+            <td>{{ player.college }}</td>
+            <td>{{ player.birth_date | date}}</td>
+        </tr>
+    </table>
+</div>
+<br>
+<!-- Player statistics personal, seasons, playoffs... -->
+<div id="playerStatistics" ng-show="nba.showPlayer">
+    <fieldset>
+        <!-- Place for player image and personal data - FIRST -->
+        <div id="FIRST">
+            <!-- IMAGE -->
+            <div id="imageDiv">
+                <img src="images/michael-jordan1.jpg" height="200" width="150" vspace="10">
+            </div>
+            <!-- DATA -->
+            <div id="dataDiv">
+                <p>PERSONAL CARD</p>
+                <p3>Player ID:</p3>
+                <p4>{{ nba.player.player_id }}</p4>
+                <br>
+                <p3>First Name:</p3>
+                <p4>{{ nba.player.first_name }}</p4>
+                <br>
+                <p3>Last Name:</p3>
+                <p4>{{ nba.player.last_name }}</p4>
+                <br>
+                <p3>Birth:</p3>
+                <p4>{{ nba.player.birth_date | date}}</p4>
+                <br>
+                <p3>College:</p3>
+                <p4>{{ nba.player.college }}</p4>
+                <br>
+            </div>
+        </div>
+        <!-- Statistics - SECOND -->
+        <div id="SECOND">
+            <!-- Can check statistics for regular season or playoff by years -->
+            <div id="radio_style">
+                <ng-form>
+                    <input id="regular" type="radio" ng-model="nba.statMode" ng-change="nba.getInfoForMode(nba.player, nba.statMode)" name="statistics" value="regular" checked>
+                    <p5>Regular Season</p5>
+                    <input id="playoff" type="radio" ng-model="nba.statMode" ng-change="nba.getInfoForMode(nba.player, nba.statMode)" name="statistics" value="playoff" checked>
+                    <p5>Playoff</p5>
+                </ng-form>
+            </div>
+            <br><br>
+            <!-- Table statistics -->
+            <div id="table_style2">
+                <table>
+                    <tr>
+                        <th>Year</th>
+                        <th>Team</th>
+                        <th>Games played</th>
+                        <th>Minutes</th>
+                        <th>Points</th>
+                        <th>Offensive rebounds</th>
+                        <th>Defensive rebounds</th>
+                        <th>Rebounds</th>
+                        <th>Assists</th>
+                        <th>Steals</th>
+                        <th>Blocks</th>
+                        <th>Turnovers</th>
+                    </tr>
+                    <tr ng-repeat="season in nba.playerInfo" class="alt">
+                        <td>{{ season.year }}</td>
+                        <td>{{ season.team }}</td>
+                        <td>{{ season.games_played }}</td>
+                        <td>{{ season.minutes }}</td>
+                        <td>{{ season.points }}</td>
+                        <td>{{ season.off_rebounds }}</td>
+                        <td>{{ season.def_rebounds }}</td>
+                        <td>{{ season.rebounds }}</td>
+                        <td>{{ season.assists }}</td>
+                        <td>{{ season.steals }}</td>
+                        <td>{{ season.blocks }}</td>
+                        <td>{{ season.turnovers }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Space for player statistic graph - THIRD -->
+        <div id="THIRD">
+
+        </div>
+    </fieldset>
+</div>
