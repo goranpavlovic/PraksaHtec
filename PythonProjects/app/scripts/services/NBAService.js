@@ -4,9 +4,11 @@
  */
 
 angular.module('pythonProjectsApp')
-    .service('NBAService', ["$http", "NBAFactory", "NBARegularFactory", function($http, NBAFactory, NBARegularFactory){
+    .service('NBAService', ["$http", "NBAFactory", "NBARegularFactory", "NBAPlayersCareerFactory",
+                            function($http, NBAFactory, NBARegularFactory, NBAPlayersCareerFactory){
         var self = this;
 
+        // Players All form
         self.nbaContext = {
             player : null
         };
@@ -30,8 +32,9 @@ angular.module('pythonProjectsApp')
             seasons : null
         };
 
+
         self.getPlayerAllInfo = function (id, statMode) {
-            // If checked regular radio button
+            // If checked 'regular' radio button
             if (statMode === 'regular') {
                 return NBARegularFactory.getStatisticsRegular(id)
                     .then(function(data) {
@@ -39,7 +42,7 @@ angular.module('pythonProjectsApp')
                         return data.seasons;
                     });
             }
-            // If checked playoff radio button
+            // If checked 'playoff' radio button
             if (statMode === 'playoff') {
                 return NBARegularFactory.getStatisticsPlayoff(id)
                     .then(function(data) {
@@ -47,6 +50,33 @@ angular.module('pythonProjectsApp')
                         return data.seasons;
                     });
             }
+        };
+
+        // Players Career form
+        self.nbaCareerContext = {
+            players: null
+        };
+
+        self.getPlayersInfoCareer = function (id, firstName, lastName,
+                                              points, rebounds, assists,
+                                              steals, blocks, turnovers,
+                                              pts_mode, reb_mode, ast_mode,
+                                              stl_mode, blk_mode, turn_mode)
+        {
+            NBAPlayersCareerFactory.getPlayersInfo(id, firstName, lastName,
+                                              points, rebounds, assists,
+                                              steals, blocks, turnovers,
+                                              pts_mode, reb_mode, ast_mode,
+                                              stl_mode, blk_mode, turn_mode)
+                .then(function(data) {
+                    self.nbaCareerContext.players = data.players;
+                });
+        };
+
+
+        // Players All-Star form
+        self.nbaAllStarContext = {
+            players: null
         };
 
     }]);

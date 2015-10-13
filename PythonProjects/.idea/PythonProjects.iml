@@ -18,6 +18,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Basketball" />
     <orderEntry type="module" module-name="stats" />
+    <orderEntry type="module" module-name="LinesProject" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

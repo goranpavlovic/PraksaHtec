@@ -44,7 +44,7 @@ angular
           controller: 'NBACtrl',
           controllerAs: 'nba'
         })
-      .when('/nbaPlayersAll', {
+      .when('/nba/all', {
           templateUrl: 'views/nba_players_all.html',
           controller: 'NBACtrl',
           controllerAs: 'nba'
@@ -56,6 +56,26 @@ angular
         })
       .when('/nbaAllStar', {
           templateUrl: 'views/nba_players_allstar.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaTeamAll', {
+          templateUrl: 'views/nba_team_all.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaTeamSeason', {
+          templateUrl: '../views/nba_team_season.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaCoachAll', {
+          templateUrl: 'views/nba_coach_all.html',
+          controller: 'NBACtrl',
+          controllerAs: 'nba'
+        })
+      .when('/nbaCoachCareer', {
+          templateUrl: 'views/nba_coach_career.html',
           controller: 'NBACtrl',
           controllerAs: 'nba'
         })

@@ -3,57 +3,63 @@
 
         Form which use to select data from PlayersCareer table
 -->
-<div id="header_home3">
+<div id="header_home5">
     <br><br>
     <ng-form>
         <fieldset id="form">
             <legend id="form">
-                <p1>Players Career Statistics</p1>
+                <span id="p1">Players Career Statistics</span>
             </legend>
             <div id="left">
-                <p2>Player ID:</p2>
+                <span id="p2">Player ID:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.id">
                 <br>
-                <p2>First Name:</p2>
+                <span id="p2">First Name:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.firstName">
                 <br>
-                <p2>Last Name:</p2>
+                <span id="p2">Last Name:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.firstName">
                 <br> <br>
             </div>
             <div id="left">
-                <p2>Points:</p2>
+                <span id="p2">Points</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.points">
+                <select id="points" ng-model="nba.nbaCareerQuery.selectedModePointsPC" ng-options="item for item in nba.playerModes" ></select>
                 <br>
-                <p2>Rebounds:</p2>
+                <span id="p2">Rebounds:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.rebounds">
+                <select id="rebounds" ng-model="nba.nbaCareerQuery.selectedModeReboundsPC" ng-options="item for item in nba.playerModes" ></select>
                 <br>
-                <p2>Assists:</p2>
+                <span id="p2">Assists:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.assists">
+                <select id="assists" ng-model="nba.nbaCareerQuery.selectedModeAssistsPC" ng-options="item for item in nba.playerModes" ></select>
                 <br> <br>
             </div>
             <div id="left">
-                <p2>Steals:</p2>
+                <span id="p2">Steals:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.steals">
+                <select id="steals" ng-model="nba.nbaCareerQuery.selectedModeStealsPC" ng-options="item for item in nba.playerModes" ></select>
                 <br>
-                <p2>Blocks:</p2>
+                <span id="p2">Blocks:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.blocks">
+                <select id="blocks" ng-model="nba.nbaCareerQuery.selectedModeBlocksPC" ng-options="item for item in nba.playerModes" ></select>
                 <br>
-                <p2>Turnovers:</p2>
+                <span id="p2">Turnovers:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaCareerQuery.turnovers">
+                <select id="turnovers" ng-model="nba.nbaCareerQuery.selectedModeTurnoversPC" ng-options="item for item in nba.playerModes" ></select>
                 <br> <br>
             </div>
             <div id="button_style">
-                <button ng-click="nba.getPlayersInfo()">GET PLAYERS</button>
+                <button ng-click="nba.getPlayersInfoCareer()">GET PLAYERS</button>
                 <button>CLEAR ALL</button>
             </div>
         </fieldset>
@@ -61,7 +67,7 @@
 </div>
 <br> <br>
 <!-- Table -->
-<div id="table_style">
+<div id="table_style" ng-show="nba.playerCareer">
     <table>
         <tr>
             <th>Player ID</th>
@@ -78,20 +84,20 @@
             <th>Blocks</th>
             <th>Turnovers</th>
         </tr>
-        <tr class="alt">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr class="alt" ng-repeat="player in nba.nbaCareerContext.players">
+            <td>{{ player.player_id }}</td>
+            <td>{{ player.first_name }}</td>
+            <td>{{ player.last_name }}</td>
+            <td>{{ player.games_played }}</td>
+            <td>{{ player.minutes }}</td>
+            <td>{{ player.points }}</td>
+            <td>{{ player.off_rebounds }}</td>
+            <td>{{ player.def_rebounds }}</td>
+            <td>{{ player.rebounds }}</td>
+            <td>{{ player.assists }}</td>
+            <td>{{ player.steals }}</td>
+            <td>{{ player.blocks }}</td>
+            <td>{{ player.turnovers }}</td>
         </tr>
     </table>
 </div>

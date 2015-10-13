@@ -250,7 +250,8 @@ from mytestapp.models import Players, PlayersAllStar, PlayersCareer, Teams,\
                              PlayersRegularSeason, PlayersImage
 
 from mytestapp.serializers import PlayersSerializer, PlayersRegularSeasonSerializer, \
-                                  PlayersPlayoffSerializer, PlayersAllStarSerializer, PlayerImageSerializer
+                                  PlayersPlayoffSerializer, PlayersAllStarSerializer, PlayerImageSerializer, \
+                                  PlayersCareerSerializer
 
 
 class PlayersView(APIView):
@@ -336,7 +337,8 @@ class PlayersPlayoffView(APIView):
 
 class PlayersAllStarView(APIView):
     #  Auxiliary method for statistics modes
-    def compare(self, mode):
+    @staticmethod
+    def compare(mode):
         if mode == 'gt' or mode == 'lt' or mode == 'eq' or\
            mode == 'gte' or mode == 'lte':
             return True
@@ -373,7 +375,7 @@ class PlayersAllStarView(APIView):
             if pts_mode is not None:
                 # in case when mode take incorrect value
                 # we show the message about error
-                if self.compare(pts_mode) is False:
+                if PlayersAllStarView.compare(pts_mode) is False:
                     return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter points.")
 
                 # here, we have correct value and correct mode
@@ -398,7 +400,7 @@ class PlayersAllStarView(APIView):
             # Checked mode
             if reb_mode is not None:
                 # Invalid mode
-                if self.compare(reb_mode) is False:
+                if PlayersAllStarView.compare(reb_mode) is False:
                     return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter rebounds.")
 
                 # Correct mode
@@ -423,7 +425,7 @@ class PlayersAllStarView(APIView):
             # Checked mode
             if ast_mode is not None:
                 # Invalid mode
-                if self.compare(ast_mode) is False:
+                if PlayersAllStarView.compare(ast_mode) is False:
                     return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter assists.")
 
                 # Correct mode
@@ -448,7 +450,7 @@ class PlayersAllStarView(APIView):
             # Checked mode
             if blk_mode is not None:
                 # Invalid mode
-                if self.compare(blk_mode) is False:
+                if PlayersAllStarView.compare(blk_mode) is False:
                     return Response(status=status.HTTP_400_BAD_REQUEST, data="Invalid mode for parameter blocks.")
 
                 # Correct mode
@@ -489,6 +491,279 @@ class PlayersAllStarView(APIView):
             objects = objects.filter(all_star_year=year)
 
         serializer = PlayersAllStarSerializer(objects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+from types import *
+
+
+class PlayersCareerView(APIView):
+    # Is type of variable integer or not
+    #   1. TRUE - is integer
+    #   2. FALSE - is not integer
+    @staticmethod
+    def is_integer(variable):
+
+        try:
+            intVariable = int(variable)
+        except ValueError as e:
+            return False
+
+        return True
+        #
+        # if type(variable) is IntType:
+        # # if isinstance(variable, int):
+        #     return True
+        # else:
+        #     return False
+        #
+
+    def get(self, request, format=None):
+
+        # Parameters for player career statistics
+        player_id = request.GET.get(u'player_id')
+        first_name = request.GET.get(u'first_name')
+        last_name = request.GET.get(u'last_name')
+        points = request.GET.get(u'points')
+        rebounds = request.GET.get(u'rebounds')
+        assists = request.GET.get(u'assists')
+        turnovers = request.GET.get(u'turnovers')
+        blocks = request.GET.get(u'blocks')
+        steals = request.GET.get(u'steals')
+
+        # Modes for points, rebounds, ...
+        # Modes are : GT, GTE, LT, LTE, EQ
+        pts_mode = request.GET.get(u'pts_mode')
+        reb_mode = request.GET.get(u'reb_mode')
+        ast_mode = request.GET.get(u'ast_mode')
+        turn_mode = request.GET.get(u'turn_mode')
+        blk_mode = request.GET.get(u'blk_mode')
+        stl_mode = request.GET.get(u'stl_mode')
+
+        # Here we get all objects from table
+        objects = PlayersCareer.objects.all()
+
+        # Filtering table by parameter taken above
+
+        # By Id
+        if player_id is not None:
+            objects = objects.filter(player_id=player_id)
+        # By First Name
+        if first_name is not None:
+            objects = objects.filter(first_name=first_name)
+        # By Last Name
+        if last_name is not None:
+            objects = objects.filter(last_name=last_name)
+
+        # By points
+        if points is not None:
+            # Check type, points be integer
+            # Correct type
+            if PlayersCareerView.is_integer(points):
+                # Mode must be selected
+                # Selected
+                if pts_mode is not None:
+                    # Mode must have correct value
+                    # Correct
+                    if PlayersAllStarView.compare(pts_mode):
+                        if pts_mode == 'gt':
+                            objects = objects.filter(points__gt=points)
+                        elif pts_mode == 'gte':
+                            objects = objects.filter(points__gte=points)
+                        elif pts_mode == 'lt':
+                            objects = objects.filter(points__lt=points)
+                        elif pts_mode == 'lte':
+                            objects = objects.filter(points__lte=points)
+                        else:
+                            objects = objects.filter(points=points)
+
+                    # Invalid mode value
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST, data="Incorrect mode for parameter points.")
+
+                # Not selected mode
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter pts_mode must have value.")
+
+            # Invalid type
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter 'points' must be integer.")
+
+        # By rebounds
+        if rebounds is not None:
+            # Check type, rebounds be integer
+            # Correct type
+            if PlayersCareerView.is_integer(rebounds):
+                # Mode must be selected
+                # Selected
+                if reb_mode is not None:
+                    # Mode must have correct value
+                    # Correct
+                    if PlayersAllStarView.compare(reb_mode):
+                        if reb_mode == 'gt':
+                            objects = objects.filter(rebounds__gt=rebounds)
+                        elif reb_mode == 'gte':
+                            objects = objects.filter(rebounds__gte=rebounds)
+                        elif reb_mode == 'lt':
+                            objects = objects.filter(rebounds__lt=rebounds)
+                        elif reb_mode == 'lte':
+                            objects = objects.filter(rebounds__lte=rebounds)
+                        else:
+                            objects = objects.filter(rebounds=rebounds)
+
+                    # Invalid mode value
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST,
+                                        data="Incorrect mode for parameter rebounds.")
+
+                # Not selected mode
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter reb_mode must have value.")
+
+            # Invalid mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter 'rebounds' must be integer.")
+
+        # By assists
+        if assists is not None:
+            # Check type, assists be integer
+            # Correct type
+            if PlayersCareerView.is_integer(assists):
+                # Mode must be selected
+                # Selected
+                if ast_mode is not None:
+                    # Mode must have correct value
+                    # Correct
+                    if PlayersAllStarView.compare(ast_mode):
+                        if ast_mode == 'gt':
+                            objects = objects.filter(assists__gt=assists)
+                        elif ast_mode == 'gte':
+                            objects = objects.filter(assists__gte=assists)
+                        elif ast_mode == 'lt':
+                            objects = objects.filter(assists__lt=assists)
+                        elif ast_mode == 'lte':
+                            objects = objects.filter(assists__lte=assists)
+                        else:
+                            objects = objects.filter(assists=assists)
+
+                    # Invalid mode value
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST, data="Incorrect mode for parameter assists.")
+
+                # Not selected mode
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter ast_mode must have value.")
+
+            # Invalid mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter 'assists' must be integer.")
+
+        # By turnovers
+        if turnovers is not None:
+            # Check type, turnovers be integer
+            # Correct type
+            if PlayersCareerView.is_integer(turnovers):
+                # Mode must be selected
+                # Selected
+                if turn_mode is not None:
+                    # Mode must have correct value
+                    # Correct
+                    if PlayersAllStarView.compare(turn_mode):
+                        if turn_mode == 'gt':
+                            objects = objects.filter(turnovers__gt=turnovers)
+                        elif turn_mode == 'gte':
+                            objects = objects.filter(turnovers__gte=turnovers)
+                        elif turn_mode == 'lt':
+                            objects = objects.filter(turnovers__lt=turnovers)
+                        elif turn_mode == 'lte':
+                            objects = objects.filter(turnovers__lte=turnovers)
+                        else:
+                            objects = objects.filter(turnovers=turnovers)
+
+                    # Invalid mode value
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST,
+                                        data="Incorrect mode for parameter turnovers.")
+
+                # Not selected mode
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter turn_mode must have value.")
+
+            # Invalid mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter 'turnovers' must be integer.")
+
+        # By blocks
+        if blocks is not None:
+            # Check type, blocks be integer
+            # Correct type
+            if PlayersCareerView.is_integer(blocks):
+                # Mode must be selected
+                # Selected
+                if blk_mode is not None:
+                    # Mode must have correct value
+                    # Correct
+                    if PlayersAllStarView.compare(blk_mode):
+                        if blk_mode == 'gt':
+                            objects = objects.filter(blocks__gt=blocks)
+                        elif blk_mode == 'gte':
+                            objects = objects.filter(blocks__gte=blocks)
+                        elif blk_mode == 'lt':
+                            objects = objects.filter(blocks__lt=blocks)
+                        elif blk_mode == 'lte':
+                            objects = objects.filter(blocks__lte=blocks)
+                        else:
+                            objects = objects.filter(blocks=blocks)
+
+                    # Invalid mode value
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST,
+                                        data="Incorrect mode for parameter blocks.")
+
+                # Not selected mode
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter blk_mode must have value.")
+
+            # Invalid mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter 'blocks' must be integer.")
+
+        # By steals
+        if steals is not None:
+            # Check type, steals be integer
+            # Correct type
+            if PlayersCareerView.is_integer(steals):
+                # Mode must be selected
+                # Selected
+                if stl_mode is not None:
+                    # Mode must have correct value
+                    # Correct
+                    if PlayersAllStarView.compare(stl_mode):
+                        if stl_mode == 'gt':
+                            objects = objects.filter(steals__gt=steals)
+                        elif stl_mode == 'gte':
+                            objects = objects.filter(steals__gte=steals)
+                        elif stl_mode == 'lt':
+                            objects = objects.filter(steals__lt=steals)
+                        elif stl_mode == 'lte':
+                            objects = objects.filter(steals__lte=steals)
+                        else:
+                            objects = objects.filter(steals=steals)
+
+                    # Invalid mode value
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST,
+                                        data="Incorrect mode for parameter steals.")
+
+                # Not selected mode
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter stl_mode must have value.")
+
+            # Invalid mode
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data="Parameter 'steals' must be integer.")
+
+        serializer = PlayersCareerSerializer(objects, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 

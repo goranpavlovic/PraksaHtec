@@ -1,8 +1,11 @@
 @charset "utf-8";
-
+body {
+     background-image: url("/images/michael-jordan1.jpg");
+     background-size: cover;
+}
 #header_home {
-    background-image: url("images/michael-jordan1.jpg");
-    background-size: cover;
+    /*background-image: url("/images/michael-jordan1.jpg");*/
+    /*background-size: cover;*/
     font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     font-size: 120%;
     font-stretch: normal;
@@ -10,12 +13,48 @@
 }
 
 #header_home3 {
-    background-image: url("images/michael-jordan1.jpg");
-    background-size: cover;
+    /*background-image: url("images/michael-jordan1.jpg");*/
+    /*background-size: cover;*/
     font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     font-size: 120%;
     font-stretch: normal;
-    width: 650px;
+    width: 720px;
+}
+
+#header_home4 {
+    /*background-image: url("images/michael-jordan1.jpg");*/
+    /*background-size: cover;*/
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 120%;
+    font-stretch: normal;
+    width: 300px;
+}
+
+#header_home5 {
+    /*background-image: url("images/michael-jordan1.jpg");*/
+    /*background-size: cover;*/
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 120%;
+    font-stretch: normal;
+    width: 720px;
+}
+
+#header_home6 {
+    /*background-image: url("images/michael-jordan1.jpg");*/
+    /*background-size: cover;*/
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 120%;
+    font-stretch: normal;
+    width: 460px;
+}
+
+#header_home7 {
+    /*background-image: url("images/michael-jordan1.jpg");*/
+    /*background-size: cover;*/
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 120%;
+    font-stretch: normal;
+    width: 280px;
 }
 
 #header_home_2 {
@@ -129,23 +168,6 @@ body {
     border-bottom: 2px solid #ffffff;
 }
 
-p1 {
-    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
-    font-size: 70%;
-    padding: 2px 10px;
-    /*border: #d8d8d8;*/
-    border: double;
-}
-
-p2 {
-    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
-    font-size: 50%;
-    padding-top: 5px;
-    padding-right: 0;
-    padding-left: 0;
-    padding-bottom: 5px;
-}
-
 #table_style {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     width: 100%;
@@ -213,20 +235,6 @@ p2 {
     padding-top: 30px;
 }
 
-p3 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 60%;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
-
-p4 {
-    color: #31b0d5;
-    font-size: 70%;
-    padding-left: 10px;
-}
-
 #FIRST {
     position: relative;
     float: left;
@@ -272,12 +280,6 @@ p4 {
 #THIRD {
     position: relative;
     float: left;
-}
-
-p5 {
-    color: #ffffff;
-    font-size: 80%;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #radio_style {

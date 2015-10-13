@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from mytestapp.views import GetUser, MusicianInfo, PlayersView, PlayersViewTwo,\
-                            PlayersRegularSeasonView, PlayersPlayoffView, PlayersAllStarView, PlayersImageView
+                            PlayersRegularSeasonView, PlayersPlayoffView, PlayersAllStarView, PlayersImageView,\
+                            PlayersCareerView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^get-players/', PlayersViewTwo.as_view()),
     url(r'^get-regular/', PlayersRegularSeasonView.as_view()),
     url(r'^get-playoff/', PlayersPlayoffView.as_view()),
-    url(r'^get-allstar', PlayersAllStarView.as_view()),
-    url(r'^get-image', PlayersImageView.as_view())
+    url(r'^get-allstar/', PlayersAllStarView.as_view()),
+    url(r'^get-image/', PlayersImageView.as_view()),
+    url(r'^get-career/', PlayersCareerView.as_view())
 ]

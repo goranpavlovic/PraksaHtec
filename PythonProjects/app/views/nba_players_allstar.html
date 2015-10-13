@@ -6,37 +6,37 @@
     <ng-form>
         <fieldset id="form">
             <legend id="form">
-                <p1>Players All-Star Statistics</p1>
+                <span id="p1">Players All-Star Statistics</span>
             </legend>
             <div id="left">
-                <p2>Player ID:</p2>
+                <span id="p2">Player ID:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.first_name">
                 <br>
-                <p2>First Name:</p2>
+                <span id="p2">First Name:</span>
                 <br>
                 <input type="text" ng-model="">
                 <br>
-                <p2>Last Name:</p2>
+                <span id="p2">Last Name:</span>
                 <br>
                 <input type="text" ng-model="">
                 <br> <br>
             </div>
             <div id="left">
-                <p2>Conference:</p2>
+                <span id="p2">Conference:</span>
                 <br>
                 <input type="text" ng-model="">
                 <br>
-                <p2>Year:</p2>
+                <span id="p2">Year:</span>
                 <br>
                 <input type="text" ng-model="">
                 <br>
-                <p2>Points:</p2>
+                <span id="p2">Points:</span>
                 <br>
-                <input type="text" ng-model="">
-
+                <input type="text" ng-model="" width="20">
+                <select id="points" ng-model="nba.selectedModePointsAS" ng-options="item for item in nba.playerModes" ></select>
                 <!-- Drop-down menu - points mode -->
-                <div id="mode">
+                <!-- <div> id="mode" > -->
                     <!--ul>
                         <li>
                             <a href="#">.</a>
@@ -50,23 +50,24 @@
 
                         </li>
                     </ul-->
-                    <select ng-model="nba.selectedMode" ng-options="item for item in nba.playerMods" ></select>
-                </div>
-
-                <br> <br>
+                <!-- </div> -->
+            <br> <br>
             </div>
             <div id="left">
-                <p2>Rebounds:</p2>
+                <span id="p2">Rebounds:</span>
                 <br>
                 <input type="text" ng-model="">
+                <select id="rebounds" ng-model="nba.selectedModeReboundsAS" ng-options="item for item in nba.playerModes" ></select>
                 <br>
-                <p2>Assists:</p2>
-                <br>
-                <input type="text" ng-model="">
-                <br>
-                <p2>Blocks:</p2>
+                <span id="p2">Assists:</span>
                 <br>
                 <input type="text" ng-model="">
+                <select id="assists" ng-model="nba.selectedModeAssistsAS" ng-options="item for item in nba.playerModes" ></select>
+                <br>
+                <span id="p2">Blocks:</span>
+                <br>
+                <input type="text" ng-model="">
+                <select id="blocks" ng-model="nba.selectedModeBlocksAS" ng-options="item for item in nba.playerModes" ></select>
                 <br> <br>
             </div>
             <div id="button_style">

@@ -85,21 +85,57 @@ angular.module('pythonProjectsApp')
                 });
         };
 
+        // Modes if we have filtering by points, rebounds, ...
+        self.playerModes = [ 'gt', 'gte', 'lt', 'lte', 'eq' ];
+
         /**
          *  Second form - Career table
          */
+        self.nbaCareerQuery = {
+            // Search parameters
+            id: '',
+            firstName: '',
+            lastName: '',
+            points: '',
+            rebounds: '',
+            assists: '',
+            steals: '',
+            blocks: '',
+            turnovers: '',
+            selectedModePointsPC: '',
+            selectedModeReboundsPC: '',
+            selectedModeAssistsPC: '',
+            selectedModeBlocksPC: '',
+            selectedModeStealsPC: '',
+            selectedModeTurnoversPC: ''
 
+        };
+
+        self.nbaCareerContext = NBAService.nbaCareerContext;
+
+        // Flag to show table career statistics for players
+        self.playerCareer = false;
+
+        self.getPlayersInfoCareer = function () {
+            self.playerCareer = true;
+
+            NBAService.getPlayersInfoCareer
+            (self.nbaCareerQuery.id, self.nbaCareerQuery.firstName, self.nbaCareerQuery.lastName,
+             self.nbaCareerQuery.points, self.nbaCareerQuery.rebounds, self.nbaCareerQuery.assists,
+             self.nbaCareerQuery.steals, self.nbaCareerQuery.blocks, self.nbaCareerQuery.turnovers,
+             self.nbaCareerQuery.selectedModePointsPC, self.nbaCareerQuery.selectedModeReboundsPC,
+                self.nbaCareerQuery.selectedModeAssistsPC,
+                self.nbaCareerQuery.selectedModeStealsPC, self.nbaCareerQuery.selectedModeBlocksPC,
+                self.nbaCareerQuery.selectedModeTurnoversPC
+            );
+
+            //self.playerCareer = false;
+        };
 
         /**
          *  Third form - All-Star table
          */
+        self.nbaAllStarContext = NBAService.nbaAllStarContext;
 
-        self.playerMods = [
-            'gt',
-            'gte',
-            'lt',
-            'lte',
-            'eq'
-        ];
 
   }]);

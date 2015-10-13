@@ -13,32 +13,32 @@
     <ng-form>
         <fieldset id="form">
             <legend id="form">
-                <p1>All Players Statistics</p1>
+                <span id="p1">All Players Statistics</span>
             </legend>
             <div id="left">
-                <p2>Player ID:</p2>
+                <span id="p2">Player ID:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.id">
                 <br>
-                <p2>First Name:</p2>
+                <span id="p2">First Name:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.first_name">
                 <br>
-                <p2>Last Name:</p2>
+                <span id="p2">Last Name:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.last_name">
                 <br> <br>
             </div>
             <div id="right">
-                <p2>Position:</p2>
+                <span id="p2">Position:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.position">
                 <br>
-                <p2>First season:</p2>
+                <span id="p2">First season:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.first_season">
                 <br>
-                <p2>Last season:</p2>
+                <span id="p2">Last season:</span>
                 <br>
                 <input type="text" ng-model="nba.nbaQuery.last_season">
                 <br> <br>
@@ -95,20 +95,20 @@
             <!-- DATA -->
             <div id="dataDiv">
                 <p>PERSONAL CARD</p>
-                <p3>Player ID:</p3>
-                <p4>{{ nba.player.player_id }}</p4>
+                <span id="p3">Player ID:</span>
+                <span id="p4">{{ nba.player.player_id }}</span>
                 <br>
-                <p3>First Name:</p3>
-                <p4>{{ nba.player.first_name }}</p4>
+                <span id="p3">First Name:</span>
+                <span id="p4">{{ nba.player.first_name }}</span>
                 <br>
-                <p3>Last Name:</p3>
-                <p4>{{ nba.player.last_name }}</p4>
+                <span id="p3">Last Name:</span>
+                <span id="p4">{{ nba.player.last_name }}</span>
                 <br>
-                <p3>Birth:</p3>
-                <p4>{{ nba.player.birth_date | date}}</p4>
+                <span id="p3">Birth:</span>
+                <span id="p4">{{ nba.player.birth_date | date}}</span>
                 <br>
-                <p3>College:</p3>
-                <p4>{{ nba.player.college }}</p4>
+                <span id="p3">College:</span>
+                <span id="p4">{{ nba.player.college }}</span>
                 <br>
             </div>
         </div>
@@ -118,9 +118,9 @@
             <div id="radio_style">
                 <ng-form>
                     <input id="regular" type="radio" ng-model="nba.statMode" ng-change="nba.getInfoForMode(nba.player, nba.statMode)" name="statistics" value="regular" checked>
-                    <p5>Regular Season</p5>
+                    <span id="p5">Regular Season</span>
                     <input id="playoff" type="radio" ng-model="nba.statMode" ng-change="nba.getInfoForMode(nba.player, nba.statMode)" name="statistics" value="playoff" checked>
-                    <p5>Playoff</p5>
+                    <span id="p5">Playoff</span>
                 </ng-form>
             </div>
             <br><br>
