@@ -11,30 +11,32 @@
             <div id="left">
                 <span id="p2">Player ID:</span>
                 <br>
-                <input type="text" ng-model="nba.nbaQuery.first_name">
+                <input type="text" ng-model="nba.nbaAllStarQuery.id">
                 <br>
                 <span id="p2">First Name:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaAllStarQuery.first">
                 <br>
                 <span id="p2">Last Name:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaAllStarQuery.last">
                 <br> <br>
             </div>
             <div id="left">
                 <span id="p2">Conference:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaAllStarQuery.conf">
                 <br>
                 <span id="p2">Year:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nba.nbaAllStarQuery.year">
                 <br>
                 <span id="p2">Points:</span>
                 <br>
-                <input type="text" ng-model="" width="20">
-                <select id="points" ng-model="nba.selectedModePointsAS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nba.nbaAllStarQuery.pts"
+                                   ng-show="nba.nbaAllStarQuery.selectedModePointsAS != 'between'">
+                <select id="points" ng-model="nba.nbaAllStarQuery.selectedModePointsAS"
+                                    ng-options="item for item in nba.playerAllStarModes"></select>
                 <!-- Drop-down menu - points mode -->
                 <!-- <div> id="mode" > -->
                     <!--ul>
@@ -56,22 +58,23 @@
             <div id="left">
                 <span id="p2">Rebounds:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="rebounds" ng-model="nba.selectedModeReboundsAS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nba.nbaAllStarQuery.reb"
+                                   ng-show="nba.nbaAllStarQuery.selectedModeReboundsAS != between">
+                <select id="rebounds" ng-model="nba.nbaAllStarQuery.selectedModeReboundsAS" ng-options="item for item in nba.playerAllStarModes" ></select>
                 <br>
                 <span id="p2">Assists:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="assists" ng-model="nba.selectedModeAssistsAS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nba.nbaAllStarQuery.ast">
+                <select id="assists" ng-model="nba.nbaAllStarQuery.selectedModeAssistsAS" ng-options="item for item in nba.playerAllStarModes" ></select>
                 <br>
                 <span id="p2">Blocks:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="blocks" ng-model="nba.selectedModeBlocksAS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nba.nbaAllStarQuery.blk">
+                <select id="blocks" ng-model="nba.nbaAllStarQuery.selectedModeBlocksAS" ng-options="item for item in nba.playerAllStarModes" ></select>
                 <br> <br>
             </div>
             <div id="button_style">
-                <button ng-click="nba.getPlayersInfo()">GET PLAYERS</button>
+                <button ng-click="nba.callServerAllStar()">GET PLAYERS</button>
                 <button>CLEAR ALL</button>
             </div>
         </fieldset>
@@ -79,39 +82,101 @@
 </div>
 <br> <br>
 <!-- Table -->
-<div id="table_style" ng-show="">
-    <table>
-        <tr>
-            <th>Player ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Year</th>
-            <th>Conference</th>
-            <th>Minutes</th>
-            <th>Points</th>
-            <th>Offensive rebounds</th>
-            <th>Defensive rebounds</th>
-            <th>Rebounds</th>
-            <th>Assists</th>
-            <th>Steals</th>
-            <th>Blocks</th>
-            <th>Turnovers</th>
-        </tr>
-        <tr class="alt">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+<div id="table_style" ng-show="nba.allStarTable">
+    <table st-table="nba.nbaAllStarContext"
+           st-pipe="nba.callServerAllStar">
+        <thead>
+            <tr>
+                <th st-sort="all_player">Player ID</th>
+                <th st-sort="first_name">First Name</th>
+                <th st-sort="last_name">Last Name</th>
+                <th st-sort="all_star_year">Year</th>
+                <th st-sort="conference">Conference</th>
+                <th st-sort="minutes">Minutes</th>
+                <th st-sort="points">Points</th>
+                <th st-sort="off_rebounds">Offensive rebounds</th>
+                <th st-sort="def_rebounds">Defensive rebounds</th>
+                <th st-sort="rebounds">Rebounds</th>
+                <th st-sort="assists">Assists</th>
+                <th st-sort="steals">Steals</th>
+                <th st-sort="blocks">Blocks</th>
+                <th st-sort="turnovers">Turnovers</th>
+            </tr>
+            <tr>
+                <th><!--input st-search="all_player"/--></th>
+                <th><input st-search="first_name"></th>
+                <th><input st-search="last_name"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="alt" ng-repeat="player in nba.nbaAllStarContext">
+                <td>{{ player.all_player }}</td>
+                <td>{{ player.first_name }}</td>
+                <td>{{ player.last_name }}</td>
+                <td>{{ player.all_star_year }}</td>
+                <td>{{ player.conference }}</td>
+                <td>{{ player.minutes }}</td>
+                <td>{{ player.points }}</td>
+                <td>{{ player.off_rebounds }}</td>
+                <td>{{ player.def_rebounds }}</td>
+                <td>{{ player.rebounds }}</td>
+                <td>{{ player.assists }}</td>
+                <td>{{ player.steals }}</td>
+                <td>{{ player.blocks }}</td>
+                <td>{{ player.turnovers }}</td>
+            </tr>
+        </tbody>
     </table>
+</div>
+<!-- Graph statistics -->
+<div>
+    <fieldset>
+        <!-- CHECKBOX -->
+        <div>
+            <ng-form>
+                <!-- For all stats -->
+                <div>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.minutes">Minutes</label><br>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.points">Points</label><br>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.assists">Assists</label><br>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.steals">Steals</label><br>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.blocks">Blocks</label><br>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.turnovers">Turnovers</label><br>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.rebounds">Rebounds</label><br>
+                </div>
+                <br>
+                <!-- For rebounds -->
+                <div ng-show="nba.drawFlags.rebounds">
+                    <label><input type="checkbox" ng-model="nba.drawFlags.offensive">Offensive Rebounds</label>
+                    <label><input type="checkbox" ng-model="nba.drawFlags.defensive">Defensive Rebounds</label>
+                </div>
+            </ng-form>
+        </div>
+        <!-- GRAPH AND RADIO -->
+        <div>
+            <!-- GRAPH -->
+            <div id="left">
+
+            </div>
+            <!-- RADIO BUTTON - Graph types -->
+            <div id="left">
+                <label><input type="radio"></label><br>
+                <label><input type="radio"></label><br>
+                <label><input type="radio"></label><br>
+                <label><input type="radio"></label><br>
+                <label><input type="radio"></label><br>
+            </div>
+        </div>
+    </fieldset>
 </div>

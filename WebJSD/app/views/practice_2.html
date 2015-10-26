@@ -1,0 +1,322 @@
+<!--
+<p>
+    HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML <br>
+    HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML <br>
+    HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML <br>
+    HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML <br>
+    HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML <br>
+    HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML <br>
+</p>
+<div>
+     <iframe src="demo_iframe.htm" name="iframe_a"></iframe>
+     <p><a href="http://www.w3schools.com" target="iframe_a">W3Schools.com</a></p>
+</div>
+<div>
+    1000 000 &euro; = 1 200 000 $
+</div>
+-->
+<div>
+    <!-- Some JavaScript code -->
+    <script language="JavaScript">
+        // Four simple operations
+        // and comments in one line
+        /*function operation(op) {
+            var x = document.myForm.first_num.value - 0;
+            var y = document.myForm.second_num.value - 0;
+            var result = 0;
+            /*
+            * Every operation has code number
+            * 1 - ADD
+            * 2 - SUB
+            * 3 - MUL
+            * 4 - DIV
+            * This is block comment
+            *
+            switch (op) {
+                case 1: result = x + y; break;
+                case 2: result = x - y; break;
+                case 3: result = x * y; break;
+                case 4:
+                    if (y == 0) {
+                        document.myForm.result_num.value = "Division with zero is not allowed";
+                        return -1;
+                    }
+                    else
+                        result = x / y; break;
+            }
+            document.myForm.result_num.value = result;
+        }*/
+        var body = "var x = document.myForm.first_num.value - 0;\
+            var y = document.myForm.second_num.value - 0;\
+            var result = 0;\
+            switch (op) {\
+                case 1: result = x + y; break;\
+                case 2: result = x - y; break;\
+                case 3: result = x * y; break;\
+                case 4:\
+                    if (y == 0) {\
+                        document.myForm.result_num.value = 'Division with zero is not allowed';\
+                        return -1;\
+                    }\
+                    else\
+                        result = x / y; break;\
+            }\
+            document.myForm.result_num.value = result;"
+        var operation = new Function("op",body);
+        /**
+         * Factorial function and
+         * Sum of squares of first n natural numbers and
+         * documentation comment
+         */
+        function fact_sum() {
+            var n = document.myForm.number - 0;
+            var fact_r  = 1;
+            var sum_r = 0;
+
+            if(this.id === 'fact'){
+                var nLocal = n;
+                if (nLocal == 0)
+                    document.myForm.result.value = 1;
+                else {
+                    while(nLocal > 0) {
+                        fact_r = fact_r * nLocal;
+                        nLocal = nLocal - 1;
+                    }
+                }
+                document.myform.result.value = fact_r;
+            }
+            else if(this.id === 'sum') {
+                nLocal = n;
+                while(nLocal > 0) {
+                    sum_r = sum_r + nLocal * nLocal;
+                    nLocal = nLocal - 1;
+                }
+                document.myform.result.value = sum_r;
+            }
+
+        }
+    </script>
+    <form method="post" name="myForm">
+        <div>
+            <fieldset>
+                <legend>Two numbers adding, subtraction, multiply and division</legend>
+                First number:<br>
+                <input id="first" type="text" name="first_num"> <br>
+                Second number:<br>
+                <input id="second" type="text" name="second_num"> <br>
+                Result:<br>
+                <input id="result" type="text" name="result_num"> <br>
+                <br>
+                <input type="button" name="ADD" value="ADD" onclick="operation(1)">
+                <input type="button" name="SUB" value="SUB" onclick="operation(2)">
+                <input type="button" name="MUL" value="MUL" onclick="operation(3)">
+                <input type="button" name="DIV" value="DIV" onclick="operation(4)">
+                <br><br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Factorial and Square Sum</legend>
+                Number:<br>
+                <input id="number" type="text" name="number">   <br>
+                Result:<br>
+                <input id="result" type="text" name="result">   <br>
+                <br>
+                <input id="fact" type="button" name="FACT" value="FACT" onclick="fact_sum()">
+                <input id="sum" type="button" name="SUM" value="SUM" onclick="fact_sum()">
+                <br><br>
+            </fieldset>
+        </div>
+        <div>
+            <h1>THE GREATEST CHESS PLAYERS OF ALL TIME</h1>
+            <!-- Drop-down -->
+            <iframe src="demo_iframe.htm" name="iframe_a"></iframe>
+            <br>
+            <select name="Chess Players">
+                <a href="images/bobby.jpg" target="iframe_a">
+                    <option value="bobby">
+                    Robert Bobby Fischer
+                    </option>
+                </a>
+                <option value="tal">Mikhail Tal</option>
+                <option value="spassky">Boris Spassky</option>
+                <option value="reshevsky">Samuel Reshevsky</option>
+                <option value="smyslov">Vasily Smyslov</option>
+            </select>
+            <br><br>
+            <!-- Text Area -->
+            <!--
+            <textarea rows="20" cols="40">
+
+            </textarea>
+            -->
+        </div>
+        <!-- Canvas -->
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#401669";
+            ctx.fillRect(0,0,800,400);
+            ctx.fillStyle = "#FFFF00";
+            ctx.fillRect(100,100,600,200);
+            for (var i = 1; i < 7; i++) {
+                for (var j = 1; j < 3; j++) {
+                    ctx.fillStyle = "#000000"
+                    if (i % 2 === 1)
+                        ctx.fillRect(100 * i, 100*j, 100, 50);
+                    else
+                        ctx.fillRect(100 * i, 100*j + 50, 100, 50);
+                }
+            }
+        </script>
+        <script>
+            var canvas_ = document.getElementById("Figures");
+            var con = canvas_.getContext("2d");
+            con.fillStyle = "#0000CC";
+            con.fillRect(0,0,500,500);
+            con.fillStyle = "#FF6600";
+            con.beginPath();
+            con.arc(250,250,250,0,2*Math.PI);
+            con.fill();
+            con.stroke();
+            con.fillStyle = "#3399FF";
+            con.beginPath();
+            con.arc(300,279,100,0,2*Math.PI);
+            //con.fill();
+            con.stroke();
+            con.fillStyle = "#00CC00";
+            con.beginPath();
+            con.arc(200,279,100,0,2*Math.PI);
+            //con.fill();
+            con.stroke();
+            con.fillStyle = "#FF0000";
+            con.beginPath();
+            con.arc(250,192,100,0,2*Math.PI);
+            //con.fill();
+            con.stroke();
+        </script>
+        <div>
+            <canvas id="myCanvas" width="800" height="400"></canvas>
+        </div>
+        <br><br>
+        <div>
+            <canvas id="Figures" width="500" height="500"></canvas>
+        </div>
+        <br><br>
+        <div>
+            <canvas id="canvas" width="300" height="300" style="background-color:#333"></canvas>
+
+            <script>
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
+                var radius = canvas.height / 2;
+                ctx.translate(radius, radius);
+                radius = radius * 0.90;
+                //drawClock();
+                setInterval(drawClock, 1000);
+
+                function drawClock() {
+                    ctx.arc(0, 0, radius, 0 , 2*Math.PI);
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                    drawFace(ctx, radius);
+                    drawNumbers(ctx, radius);
+                    drawTime(ctx, radius);
+                }
+                function drawFace(ctx, radius) {
+                    var grad;
+
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius, 0, 2*Math.PI);
+                    ctx.fillStyle = 'white';
+                    ctx.fill();
+
+                    grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+                    grad.addColorStop(0, '#333');
+                    grad.addColorStop(0.5, 'white');
+                    grad.addColorStop(1, '#333');
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = radius*0.1;
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+                    ctx.fillStyle = '#333';
+                    ctx.fill();
+                }
+                function drawNumbers(ctx, radius) {
+                    var ang;
+                    var num;
+                    ctx.font = radius*0.15 + "px arial";
+                    ctx.textBaseline="middle";
+                    ctx.textAlign="center";
+                    for(num= 1; num < 13; num++){
+                        ang = num * Math.PI / 6;
+                        ctx.rotate(ang);
+                        ctx.translate(0, -radius*0.85);
+                        ctx.rotate(-ang);
+                        ctx.fillText(num.toString(), 0, 0);
+                        ctx.rotate(ang);
+                        ctx.translate(0, radius*0.85);
+                        ctx.rotate(-ang);
+                    }
+                }
+                function drawTime(ctx, radius){
+                    var now = new Date();
+                    var hour = now.getHours();
+                    var minute = now.getMinutes();
+                    var second = now.getSeconds();
+                    //hour
+                    hour=hour%12;
+                    hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
+                    drawHand(ctx, hour, radius*0.5, radius*0.07);
+                    //minute
+                    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+                    drawHand(ctx, minute, radius*0.8, radius*0.07);
+                    // second
+                    second=(second*Math.PI/30);
+                    drawHand(ctx, second, radius*0.9, radius*0.02);
+                }
+
+                function drawHand(ctx, pos, length, width) {
+                    ctx.beginPath();
+                    ctx.lineWidth = width;
+                    ctx.lineCap = "round";
+                    ctx.moveTo(0,0);
+                    ctx.rotate(pos);
+                    ctx.lineTo(0, -length);
+                    ctx.stroke();
+                    ctx.rotate(-pos);
+                }
+            </script>
+        </div>
+        <br><br>
+        <div>
+            <script language="JavaScript">
+                function divide() {
+                    var n = document.divform.number.value - 0;
+                    var list = [];
+                    for (var i = 1; i < n; i++) {
+                        if (n % i == 0) {
+                            list.push(i);
+                        }
+                    }
+                    //document.divform.divider.value = list;
+                    for (var j = 0; j < list.length; j++)
+                        document.write(list[j]);
+                }
+            </script>
+            <form method="post" name="divform">
+                <fieldset>
+                    <legend>Dividers</legend>
+                    Number:<br>
+                    <input id="number" type="text" name="number"><br>
+                    Dividers:<br>
+                    <input id="divider" type="text" name="divider" size="50">
+                    <br><br>
+                    <input type="button" name="SOLVE" value="SOLVE" onclick="divide()">
+                </fieldset>
+            </form>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,397 @@
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Practice HTML-a, CSS-a, JavaScript-a i AngularJS-a</title>
+
+    </head>
+    <body>
+        <div>
+            <!--
+                    Here we will meet paragraphs, divisions, lists (ordered and unordered)
+            -->
+            <div>
+                <p>MUSICIANS</p>
+                <!-- Unordered list -->
+                <!-- For every list we can configure different style, musicians is square-->
+                <ul style="list-style-type:square">
+                    <li>Freddie Mercury</li>
+                    <li>Kenny Loggins</li>
+                    <li>Diana Krall</li>
+                    <li>Vera Ivkovic</li>
+                    <li>Mira Vasiljevic</li>
+                </ul>
+            </div>
+            <!-- Ordered list -->
+            <!-- For ordered list we have types A, a, i, I, 1., ... -->
+            <div>
+                <p>FREDDIE MERCURY</p>
+                <ol type="I">
+                    <li>Made in Heaven</li>
+                    <li>I Was Born to Love You</li>
+                    <li>Foolin' Around</li>
+                    <li>Your Kind of Lover</li>
+                </ol>
+            </div>
+        </div>
+        <div>
+            <!-- Now we show image on our page. And practice links. -->
+            <a target="_blank" href="http://www.imdb.com/name/nm3331125/">
+                <img src="images/RUYST_1.jpg" alt="Russian Girl Yanina Studilina" width="480" height="720">
+            </a>
+        </div>
+        <div>
+            <p>Horizontal line between two paragraphs</p>
+            <hr>
+            <p>Horizontal line between two paragraph</p>
+        </div>
+        <div>
+            <!-- Making new line with <br> (break line) -->
+            <p>
+                Beautiful blue balloons. <br>
+                Beautiful blue balloons. <br>
+                Beautiful blue balloons. <br>
+                Beautiful blue balloons. <br>
+                Beautiful blue balloons.
+            </p>
+        </div>
+        <style type="text/css">
+            st_1 {
+                font-family: Arial, Helvetica, sans-serif;
+                color: #bd86ff;
+            }
+            st_2 {
+                font-family: Verdana;
+                color: #ccffa7;
+            }
+            st_3 {
+                font-family: "Courier New", courier, monospace;
+                color: #8c8c8c;
+            }
+            table#t01 {
+                width: 150%;
+                background-color: #337ab7;
+            }
+            div.olympics {
+                background-image: url("images/olympics.jpg");
+                background-size: 260px 130px;
+                background-position: right center;
+                background-repeat: no-repeat;
+                background-color: #357ebd;
+                margin:20px;
+                padding:20px;
+                text-align: justify;
+            }
+            div.olympics_2 {
+                background-image: url("images/Olympic-Flag-with-Rings.jpg");
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                margin:20px;
+                padding:20px;
+                text-align: justify;
+            }
+            div.soviet_union {
+                background-image: url("images/su.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+                margin: auto;
+                padding: inherit;
+                text-align: justify;
+            }
+            #header {
+                background-color:black;
+                color:white;
+                text-align:center;
+                padding:5px;
+            }
+            #nav {
+                line-height:30px;
+                background-color:#eeeeee;
+                height:300px;
+                width:100px;
+                float:right;
+                padding:5px;
+            }
+            #section {
+                width:350px;
+                float:right;
+                padding:10px;
+            }
+            #footer {
+                background-color:black;
+                color:white;
+                clear:both;
+                text-align:center;
+                padding:5px;
+            }
+            .city {
+                float: left;
+                margin: 5px;
+                padding: 15px;
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+            }
+        </style>
+        <!-- Here we practice styles combined with lists-->
+        <div style="background-color: #261a3b">
+            <st_1><p>This part of page has different color than others.</p></st_1>
+            <st_3>
+                <h1><abbr title="JAZZ QUEEN">DIANA KRALL</abbr></h1>
+                <ul>
+                    <h2>Stepping Out</h2>
+                    <ol>
+                        <li>This Can't Be Love</li>
+                        <li>Straighten Up and Fly Right</li>
+                        <li>I'm Just a Lucky So-and-So</li>
+                    </ol>
+                    <h2>Only Trust Your Heart</h2>
+                    <ol>
+                        <li>The Folks Who Live On the Hill</li>
+                        <li>I've Got the World on a String</li>
+                        <li>Just Squeeze Me (But Please Don't Tease Me)</li>
+                    </ol>
+                    <h2>When I Look in Your Eyes</h2>
+                    <ol>
+                        <li>I've Got You Under My Skin" (Cole Porter)</li>
+                        <li>The Best Thing for You</li>
+                        <li>When I Look in Your Eyes</li>
+                    </ol>
+                </ul>
+                <br>
+            </st_3>
+        </div>
+        <div>
+             <p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
+             <p>Here is a quote from WWF's website:</p>
+             <blockquote cite="http://www.worldwildlife.org/who/index.html">
+                For 50 years, WWF has been protecting the future of nature.
+                The world's leading conservation organization,
+                WWF works in 100 countries and is supported by
+                1.2 million members in the United States and
+                close to 5 million globally.
+             </blockquote>
+            <p>
+                Next <abbr title="Federation of International Basketball Associations">FIBA</abbr> World
+                Championship is organised at China in 2019. Last championship was in Spain 2014 and gold
+                medalist were players from <abbr title="United States of America">USA</abbr>. World Championship
+                is organised on five years the second time in basketball history and first after 1959
+            </p>
+        </div>
+        <div>
+            <p>Coding Example:</p>
+            <code>
+                var person = {
+                    firstName:"John",
+                    lastName:"Doe",
+                    age:50,
+                    eyeColor:"blue"
+                }
+                5 + 5
+            </code>
+            <div style="background-color: #261a3b">
+                <br>
+                <p style="color: #2aabd2">VHDL Example</p>
+                <code style="background-color: #261a3b">
+                    entity LOGIC_AND is <br>
+                        &emsp;port (  <br>
+                            &emsp;&emsp;-- Input ports  <br>
+                                &emsp;&emsp;&emsp;&emsp;A, B : in std_logic;    <br>
+                                                        <br>
+                            &emsp;&emsp;-- Output ports     <br>
+                                &emsp;&emsp;&emsp;&emsp;C : in std_logic    <br>
+                        &emsp;);  <br>
+                    end entity LOGIC_AND; <br>
+                </code>
+            </div>
+                <p>Output example</p>
+                <samp>
+                    Output Output Output Output Output Output Output Output Output Output <br>
+                    Output Output Output Output Output Output Output Output Output Output <br>
+                </samp>
+        </div>
+        <div>
+            <h3>PYTHAGOREAN THEOREM</h3>
+            <h4>
+                <var>
+                    c<sup>2</sup> = a<sup>2</sup>+b<sup>2</sup>
+                </var>
+            </h4>
+        </div>
+        <div>
+            <!-- HTML CSS-->
+            <p>CSS from the another file<p>
+        </div>
+        <div>
+            <table id="t01" border="2">
+                <caption>
+                    MUSICIANS
+                </caption>
+                <tr>
+                    <td>ID</td>
+                    <td>First Name</td>
+                    <td bgcolor="#4b0082">Last Name</td>
+                    <td bgcolor="#ff7f50">AGE</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td bgcolor="green">Diana</td>
+                    <td>Krall</td>
+                    <td>51</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffd700">2</td>
+                    <td>Kenny</td>
+                    <td bgcolor="#dc143c">Loggins</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Freddie</td>
+                    <td>Mercury</td>
+                    <td>dead</td>
+                </tr>
+            </table>
+             <dl>
+                <dt>Coffee</dt>
+                <dd>- black hot drink</dd>
+                <dt>Milk</dt>
+                <dd>- white cold drink</dd>
+             </dl>
+        </div>
+        <div class="olympics">
+            <h1>BASKETBALL</h1>
+        </div>
+        <div class="olympics_2">
+            <p>
+                Basketball appeared at Olympic Games in 1936 in Berlin. The most successful team
+                is America. Americans have 17 medals, 14 golden, 1 silver and 2 bronze medals. After USA
+                Soviet Union today Russia and Yugoslavia now Serbia are the best teams at Olympics. Russians
+                was two times champions in 1972 and 1988. Serbia as Yugoslavia was Olympic champion in 1980.
+                That year when Yugoslavia won gold was special because America didn't participate, because of
+                Cold War between USA and USSR. In 1980 Olympics organised in Moscow.
+
+                <table border="2" width="100%">
+                    <caption>
+                        MEDAL TABLE
+                    </caption>
+                    <tr>
+                        <td>COUNTRY</td>
+                        <td>GOLD</td>
+                        <td>SILVER</td>
+                        <td>BRONZE</td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;<img src="images/sample_of_the_official_usg_color_flag_350x250.jpg" height=21 width=30> USA</td>
+                        <td>14</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;<img src="images/images.png" height=21 width=30> Russia</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;<img src="images/Flag_of_Serbia.svg.png" height=21 width=30> Serbia</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <div class="olympics">
+            <h1>WATER POLO</h1>
+        </div>
+        <div class="olympics_2">
+            <p>
+                Water polo has been part of the Summer Olympics program since the second games,
+                in 1900. A women's water polo tournament was introduced for the 2000 Summer Olympics.
+                Hungary, Italy, and the former Soviet Union and Yugoslavian teams have historically
+                dominated the men's tournament, while Australia and the United States are the only
+                teams to win multiple medals at the women's tournament since its introduction.
+                <br>
+                <div align="center">
+                    <img src="images/wp1.jpg" height="120" width="180">
+                    <img src="images/wp2.jpg" height="120" width="180">
+                    <img src="images/wp3.jpg" height="120" width="180">
+                </div>
+        </div>
+        <div class="olympics">
+            <h1>VOLLEYBALL</h1>
+        </div>
+        <div class="olympics_2">
+            <p>
+                With a Soviet-led boycott in 1984, the United States confirmed their new volleyball
+                leadership in the Western World by sweeping smoothly over Brazil at the finals. In
+                that edition a minor nation, Italy, won its first medal, but Italy would rise to
+                prominence in volleyball in later years.A long-awaited confrontation between the
+                western and eastern volleyball leaders came in 1988: powerplayers Karch Kiraly and
+                Steve Timmons pushed the USA to a second gold medal setting the issue in favor of the
+                Americans.
+
+                In 1992, Brazil upset favorites Unified Team, Netherlands, and Italy for
+                a first Olympic championship. Runner-up Netherlands, with Ron Zwerver and Olof van der
+                Meulen, came back in the following edition for a five-set win, again over Italy. In
+                spite of their success in other competitions, Italy did not fare well at the Olympics.
+
+                After winning bronze in 1996, Serbia and Montenegro, led by Vladimir and Nikola Grbić,
+                beat Russia at the finals in 2000 to secure the gold (in 1996 and 2000 they played
+                under the name Federal Republic of Yugoslavia).
+                <br>
+                <div align="center">
+                    <img src="images/usa1.jpg" height="120" width="180">
+                    <img src="images/ned.jpg" height="120" width="180">
+                    <img src="images/0002.jpg" height="120" width="180">
+                </div>
+        </div>
+        <div id="header">
+            <h1>City Gallery</h1>
+        </div>
+
+        <div id="nav">
+            <a>London</a><br>
+            <a>Paris</a><br>
+            <a>Tokyo</a><br>
+        </div>
+
+        <div id="section">
+            <h1>London</h1>
+            <p>
+            London is the capital city of England. It is the most populous city in the United Kingdom,
+            with a metropolitan area of over 13 million inhabitants.
+            </p>
+            <p>
+            Standing on the River Thames, London has been a major settlement for two millennia,
+            its history going back to its founding by the Romans, who named it Londinium.
+            </p>
+        </div>
+
+        <div id="footer">
+            Copyright © W3Schools.com
+        </div>
+        <h1>Responsive Web Design Demo</h1>
+
+        <div class="city">
+          <h2>London</h2>
+          <p>London is the capital city of England.</p>
+          <p>It is the most populous city in the United Kingdom,
+          with a metropolitan area of over 13 million inhabitants.</p>
+        </div>
+
+        <div class="city">
+          <h2>Paris</h2>
+          <p>Paris is the capital of France.</p>
+          <p>The Paris area is one of the largest population centers in Europe,
+          with more than 12 million inhabitants.</p>
+        </div>
+
+        <div class="city">
+          <h2>Tokyo</h2>
+          <p>Tokyo is the capital of Japan.</p>
+          <p>It is the center of the Greater Tokyo Area,
+          and the most populous metropolitan area in the world.</p>
+        </div>
+    </body>
+</html>

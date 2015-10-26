@@ -98,8 +98,8 @@ class Point(object):
 
         return math.sqrt(math.pow(self.x - point.x, 2) + math.pow(self.y - point.y, 2))
 
-    # Here we practice static methods, now we don't call these methods with Point object,
-    # but we pass coordinates or Point objects as arguments of these static functions
+    # Here we practice static methods, now we don't call these methods with the Point object,
+    # but we pass a coordinates or the Point objects as arguments of these static functions
     @staticmethod
     def distance_coord__(x, y, x_, y_):
         return math.sqrt(math.pow(x - x_, 2) + math.pow(y - y_, 2))

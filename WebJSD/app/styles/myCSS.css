@@ -1,0 +1,8 @@
+.par_style ps {
+    background-color: #449d44;
+    color: indigo;
+    font-family: fantasy;
+    font-size: 250%;
+    border: solid;
+    padding: 10px;
+}

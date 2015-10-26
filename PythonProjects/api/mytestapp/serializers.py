@@ -129,7 +129,8 @@ class NameSerializer(serializers.Serializer):
 # --------------------------------- BASKETBALL -----------------------------------------
 # --------------------------------------------------------------------------------------
 
-from models import Players, PlayersCareer, PlayersRegularSeason, PlayersPlayOff, PlayersAllStar, PlayersImage
+from models import Players, PlayersCareer, PlayersRegularSeason, PlayersPlayOff, PlayersAllStar, PlayersImage, \
+                   Teams, TeamSeason
 
 
 class PlayersSerializer(serializers.ModelSerializer):
@@ -181,3 +182,24 @@ class PlayerImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlayersImage
         fields = ('player_id', 'image')
+
+
+class TeamAllSerializer(serializers.ModelSerializer):
+    pass
+
+
+class TeamSeasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeamSeason
+        fields = ('team', 'year', 'league', 'o_fgm', 'o_fga', 'o_ftm', 'o_fta', 'o_oreb',
+                  'o_dreb', 'o_reb', 'o_asts', 'o_pf', 'o_stl', 'o_to', 'o_blk', 'o_3pm',
+                  'o_3pa', 'o_pts', 'pace', 'won', 'lost')
+
+
+class CoachAllSerializer(serializers.ModelSerializer):
+    pass
+
+
+class CoachCareerSerializer(serializers.ModelSerializer):
+    pass
+

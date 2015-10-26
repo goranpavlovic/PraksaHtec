@@ -15,7 +15,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angular-flot',
+    'smart-table'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -61,13 +63,13 @@ angular
         })
       .when('/nbaTeamAll', {
           templateUrl: 'views/nba_team_all.html',
-          controller: 'NBACtrl',
-          controllerAs: 'nba'
+          controller: 'NBATeamCtrl',
+          controllerAs: 'nbaTeam'
         })
       .when('/nbaTeamSeason', {
-          templateUrl: '../views/nba_team_season.html',
-          controller: 'NBACtrl',
-          controllerAs: 'nba'
+          templateUrl: 'views/nba_team_season.html',
+          controller: 'NBATeamCtrl',
+          controllerAs: 'nbaTeam'
         })
       .when('/nbaCoachAll', {
           templateUrl: 'views/nba_coach_all.html',
@@ -83,3 +85,4 @@ angular
         redirectTo: '/'
       });
   });
+

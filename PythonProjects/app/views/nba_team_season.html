@@ -8,97 +8,169 @@
             <div id="left">
                 <span id="p2">Team:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.team">
                 <br>
                 <span id="p2">Year:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.year">
                 <br>
                 <span id="p2">League:</span>
                 <br>
-                <input type="text" ng-model="">
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.league">
                 <br> <br>
             </div>
             <div id="left">
                 <span id="p2">Points:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="points" ng-model="nba.selectedModePointsTS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.points">
+                <select id="points" ng-model="nbaTeam.nbaTeamQuery.selectedModePointsTS"
+                                    ng-options="item for item in nbaTeam.teamModes"
+                                    ng-click="nbaTeam.callServer()"></select>
                 <br>
                 <span id="p2">Rebounds:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="rebounds" ng-model="nba.selectedModeReboundsTS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.rebounds">
+                <select id="rebounds" ng-model="nbaTeam.nbaTeamQuery.selectedModeReboundsTS"
+                                      ng-options="item for item in nbaTeam.teamModes"
+                                      ng-click="nbaTeam.callServer()"></select>
                 <br>
                 <span id="p2">Assists:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="assists" ng-model="nba.selectedModeAssistsTS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.assists">
+                <select id="assists" ng-model="nbaTeam.nbaTeamQuery.selectedModeAssistsTS"
+                                     ng-options="item for item in nbaTeam.teamModes"
+                                     ng-click="nbaTeam.callServer()"></select>
                 <br> <br>
             </div>
             <div id="left">
                 <span id="p2">Steals:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="steals" ng-model="nba.selectedModeStealsTS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.steals">
+                <select id="steals" ng-model="nbaTeam.nbaTeamQuery.selectedModeStealsTS"
+                                    ng-options="item for item in nbaTeam.teamModes"
+                                    ng-click="nbaTeam.callServer()"></select>
                 <br>
                 <span id="p2">Blocks:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="blocks" ng-model="nba.selectedModeBlocksTS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.blocks">
+                <select id="blocks" ng-model="nbaTeam.nbaTeamQuery.selectedModeBlocksTS"
+                                    ng-options="item for item in nbaTeam.teamModes"
+                                    ng-click="nbaTeam.callServer()"></select>
                 <br>
                 <span id="p2">Turnovers:</span>
                 <br>
-                <input type="text" ng-model="">
-                <select id="turnovers" ng-model="nba.selectedModeTurnoversTS" ng-options="item for item in nba.playerModes" ></select>
+                <input type="text" ng-model="nbaTeam.nbaTeamQuery.turnovers">
+                <select id="turnovers" ng-model="nbaTeam.nbaTeamQuery.selectedModeTurnoversTS"
+                                       ng-options="item for item in nbaTeam.teamModes"
+                                       ng-click="nbaTeam.callServer()"></select>
                 <br> <br>
             </div>
             <div id="button_style">
-                <button ng-click="">GET PLAYERS</button>
+                <button ng-click="nbaTeam.initialCall()">GET TEAMS</button>
+                <!--button ng-click="nbaTeam.callServer(nbaTeam.tableState)">GET TEAMS</button-->
                 <button>CLEAR ALL</button>
             </div>
         </fieldset>
     </ng-form>
 </div>
 <br> <br>
+<!-- Table constraints-->
+<div id="p7">
+    <span id="p6">Items per page: </span>
+    <select id="itemPerPage" ng-model="nbaTeam.selectedNumOfItems"
+                             ng-options="item for item in nbaTeam.numItems">
+
+    </select>
+    <!--<span id="p8"> Page: </span>-->
+</div>
+<br> <br>
 <!-- Table -->
-<div id="table_style" ng-show="">
-    <table>
-        <tr>
-            <th>Team</th>
-            <th>Year</th>
-            <th>League</th>
-            <th>FGM</th>
-            <th>FGA</th>
-            <th>FTM</th>
-            <th>FTA</th>
-            <th>Offensive Rebounds</th>
-            <th>Defensive Rebounds</th>
-            <th>Rebounds</th>
-            <th>Assits</th>
-            <th>Steals</th>
-            <th>Turnovers</th>
-            <th>Blocks</th>
-            <th>3 PM</th>
-            <th>3 PA</th>
-        </tr>
-        <tr class="alt">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+<div id="table_style" ng-show="nbaTeam.tableFlag">
+    <table st-table="nbaTeam.teamSeasonCollection"
+           st-pipe="nbaTeam.callServer">
+        <thead-->
+            <tr>
+                <th st-sort="team" st-skip-natural="true">Team</th>
+                <th st-sort="year">Year</th>
+                <th st-sort="league">League</th>
+                <th st-sort="o_fgm">FGM</th>
+                <th st-sort="o_fga">FGA</th>
+                <th st-sort="o_ftm">FTM</th>
+                <th st-sort="o_fta">FTA</th>
+                <th st-sort="o_pts" st-sort-default="reverse">Points</th>
+                <th st-sort="o_oreb">Offensive Rebounds</th>
+                <th st-sort="o_dreb">Defensive Rebounds</th>
+                <th st-sort="o_reb">Rebounds</th>
+                <th st-sort="o_asts">Assists</th>
+                <th st-sort="o_stl">Steals</th>
+                <th st-sort="o_to">Turnovers</th>
+                <th st-sort="o_blk">Blocks</th>
+                <th st-sort="o_3pm">3 PM</th>
+                <th st-sort="o_3pa">3 PA</th>
+                <th st-sort="pace">Pace</th>
+                <th st-sort="won">Won</th>
+                <th st-sort="lost">Lost</th>
+            </tr>
+            <!--tr>
+                <th><input st-search="team"></th>
+                <th><input st-search="year"></th>
+                <th><input st-search="league"></th>
+                <th><input st-search="fgm"></th>
+                <th><input st-search="fga"></th>
+                <th><input st-search="ftm"></th>
+                <th><input st-search="fta"></th>
+                <th><input st-search="points"></th>
+                <th><input st-search="offensive"></th>
+                <th><input st-search="defensive"></th>
+                <th><input st-search="rebounds"></th>
+                <th><input st-search="assists"></th>
+                <th><input st-search="steals"></th>
+                <th><input st-search="turnovers"></th>
+                <th><input st-search="blocks"></th>
+                <th><input st-search="three_pm"></th>
+                <th><input st-search="three_pa"></th>
+                <th><input st-search="pace"></th>
+                <th><input st-search="won"></th>
+                <th><input st-search="lost"></th>
+            </tr>
+        </thead-->
+        <tbody>
+            <tr class="alt" ng-repeat="team in nbaTeam.teamSeasonCollection"
+                            >
+                <td>{{ team.team }}</td>
+                <td>{{ team.year }}</td>
+                <td>{{ team.league }}</td>
+                <td>{{ team.o_fgm }}</td>
+                <td>{{ team.o_fga }}</td>
+                <td>{{ team.o_ftm }}</td>
+                <td>{{ team.o_fta }}</td>
+                <td>{{ team.o_pts }}</td>
+                <td>{{ team.o_oreb }}</td>
+                <td>{{ team.o_dreb }}</td>
+                <td>{{ team.o_reb }}</td>
+                <td>{{ team.o_asts }}</td>
+                <td>{{ team.o_stl }}</td>
+                <td>{{ team.o_to }}</td>
+                <td>{{ team.o_blk }}</td>
+                <td>{{ team.o_3pm }}</td>
+                <td>{{ team.o_3pa }}</td>
+                <td>{{ team.pace }}</td>
+                <td>{{ team.won }}</td>
+                <td>{{ team.lost }}</td>
+            </tr>
+        </tbody>
+        <!--
+        <tbody ng-show="nbaTeam.isLoading">
+            <tr>
+                <td>Loading...</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td st-item-by-page="nbaTeam.selectedNumOfItems"
+                    st-displayed-pages="5"></td>
+            </tr>
+        </tfoot>
+        -->
     </table>
 </div>

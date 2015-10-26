@@ -90,7 +90,7 @@
         <div id="FIRST">
             <!-- IMAGE -->
             <div id="imageDiv">
-                <img src="images/michael-jordan1.jpg" height="200" width="150" vspace="10">
+                <img src="" height="200" width="150" vspace="10">
             </div>
             <!-- DATA -->
             <div id="dataDiv">
@@ -117,9 +117,9 @@
             <!-- Can check statistics for regular season or playoff by years -->
             <div id="radio_style">
                 <ng-form>
-                    <input id="regular" type="radio" ng-model="nba.statMode" ng-change="nba.getInfoForMode(nba.player, nba.statMode)" name="statistics" value="regular" checked>
+                    <input id="regular" type="radio" ng-model="nba.statMode" ng-change="nba.tableAndGraph(nba.player, nba.statMode)" name="statistics" value="regular" checked>
                     <span id="p5">Regular Season</span>
-                    <input id="playoff" type="radio" ng-model="nba.statMode" ng-change="nba.getInfoForMode(nba.player, nba.statMode)" name="statistics" value="playoff" checked>
+                    <input id="playoff" type="radio" ng-model="nba.statMode" ng-change="nba.tableAndGraph(nba.player, nba.statMode)" name="statistics" value="playoff" checked>
                     <span id="p5">Playoff</span>
                 </ng-form>
             </div>
@@ -156,11 +156,46 @@
                         <td>{{ season.turnovers }}</td>
                     </tr>
                 </table>
+                <br><br>
             </div>
         </div>
+        <br> <br>
         <!-- Space for player statistic graph - THIRD -->
         <div id="THIRD">
+            <!--
+                    ngOptions - we can draw chart for points, rebounds, ... , and
+                    every statistics is by the season
+            -->
+            <div>
+                <!-- For all -->
+                <div class="dirLeft">
+                    <select id="statsPlayer"
+                            ng-model="nba.selectedAll"
+                            ng-options="item for item in nba.nbaPlayerStatistics"
+                            ng-change="nba.reboundOrDraw(nba.selectedAll)">
 
+                    </select>
+                </div>
+                <!-- Exactly for rebounds-->
+                <div class="dirLeft">
+                    <select id="statsPlayerRebounds"
+                            ng-model="nba.selectedRebounds"
+                            ng-options="item for item in nba.nbaPlayerReboundsStatistics"
+                            ng-show="nba.reboundsFlag"
+                            ng-change="nba.drawGraph()">
+
+                    </select>
+                </div>
+            </div>
+            <br> <br>
+            <!-- Graph(Chart)-->
+            <div>
+                <nba-graph player="nba.playerInfo"
+                           statistics="nba.selectedStat"
+                           name="nba.statMode">
+
+                </nba-graph>
+            </div>
         </div>
     </fieldset>
 </div>

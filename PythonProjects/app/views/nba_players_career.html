@@ -21,7 +21,7 @@
                 <br>
                 <span id="p2">Last Name:</span>
                 <br>
-                <input type="text" ng-model="nba.nbaCareerQuery.firstName">
+                <input type="text" ng-model="nba.nbaCareerQuery.lastName">
                 <br> <br>
             </div>
             <div id="left">
@@ -67,37 +67,42 @@
 </div>
 <br> <br>
 <!-- Table -->
-<div id="table_style" ng-show="nba.playerCareer">
+<div id="table_style" ng-show="nba.playerCareer"
+                      st-table="nba.nbaCareerContext.players">
     <table>
-        <tr>
-            <th>Player ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Games played</th>
-            <th>Minutes</th>
-            <th>Points</th>
-            <th>Offensive rebounds</th>
-            <th>Defensive rebounds</th>
-            <th>Rebounds</th>
-            <th>Assists</th>
-            <th>Steals</th>
-            <th>Blocks</th>
-            <th>Turnovers</th>
-        </tr>
-        <tr class="alt" ng-repeat="player in nba.nbaCareerContext.players">
-            <td>{{ player.player_id }}</td>
-            <td>{{ player.first_name }}</td>
-            <td>{{ player.last_name }}</td>
-            <td>{{ player.games_played }}</td>
-            <td>{{ player.minutes }}</td>
-            <td>{{ player.points }}</td>
-            <td>{{ player.off_rebounds }}</td>
-            <td>{{ player.def_rebounds }}</td>
-            <td>{{ player.rebounds }}</td>
-            <td>{{ player.assists }}</td>
-            <td>{{ player.steals }}</td>
-            <td>{{ player.blocks }}</td>
-            <td>{{ player.turnovers }}</td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Player ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Games played</th>
+                <th>Minutes</th>
+                <th>Points</th>
+                <th>Offensive rebounds</th>
+                <th>Defensive rebounds</th>
+                <th>Rebounds</th>
+                <th>Assists</th>
+                <th>Steals</th>
+                <th>Blocks</th>
+                <th>Turnovers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="alt" ng-repeat="player in nba.nbaCareerContext.players">
+                <td>{{ player.player_id }}</td>
+                <td>{{ player.first_name }}</td>
+                <td>{{ player.last_name }}</td>
+                <td>{{ player.games_played }}</td>
+                <td>{{ player.minutes }}</td>
+                <td>{{ player.points }}</td>
+                <td>{{ player.off_rebounds }}</td>
+                <td>{{ player.def_rebounds }}</td>
+                <td>{{ player.rebounds }}</td>
+                <td>{{ player.assists }}</td>
+                <td>{{ player.steals }}</td>
+                <td>{{ player.blocks }}</td>
+                <td>{{ player.turnovers }}</td>
+            </tr>
+        </tbody>
     </table>
 </div>
