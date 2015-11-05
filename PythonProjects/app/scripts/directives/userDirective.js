@@ -4,7 +4,7 @@
  */
 
 
-angular.module('pythonProjectsApp').directive('myUser', function() {
+angular.module('nbaDirectives', []).directive('myUser', function() {
   return {
     restrict: 'E',
     scope: {

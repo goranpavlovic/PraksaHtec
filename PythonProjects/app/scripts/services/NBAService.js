@@ -282,12 +282,8 @@ angular.module('pythonProjectsApp')
                 self.orderFlags = NBA_All_StarFactory.flags;
             };
 
-            /**
-             *
-             *      ALL STAR FORM
-             *
-             * */
-            self.getPage = function (start, number, params, query) {
+
+            self.getPage = function (params, query) {
 
                 console.log("---------GET PAGE SERVICE--------");
 
@@ -295,6 +291,15 @@ angular.module('pythonProjectsApp')
                     .then(function(data) {
                             return data.players;
                         });
+            };
+
+            self.nbaAllStarDrawPlayers = { players: null };
+
+            self.getAllStarStatistics = function (id) {
+                return NBA_All_StarFactory.getAllStarStatistics(id)
+                    .then(function (data) {
+                        return self.nbaAllStarDrawPlayers.players = data.players;
+                    });
             };
 
         }]);

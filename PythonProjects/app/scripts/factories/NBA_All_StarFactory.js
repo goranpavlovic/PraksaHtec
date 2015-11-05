@@ -87,11 +87,11 @@ angular.module('pythonProjectsApp')
             var sortBy = query.sortBy;
             var sortReverse = query.sortReverse;
 
-            var prefix = query.prefix;
-            var prefixName;
-
-            if (prefix)
-                prefixName = Object.keys(prefix)[0];
+            //var prefix = query.prefix;
+            //var prefixName;
+            //
+            //if (prefix)
+            //    prefixName = Object.keys(prefix)[0];
 
             var queryURL = "get-allstar/?format=json";
 
@@ -101,14 +101,14 @@ angular.module('pythonProjectsApp')
             if (first_name)
                 queryURL += "&first_name=" + first_name;
 
-            if (prefix && prefixName == "first_name")
-                queryURL += "&first_name=" + prefix[prefixName];
+            //if (prefix && prefixName == "first_name")
+            //    queryURL += "&first_name=" + prefix[prefixName];
 
             if (last_name)
                 queryURL += "&last_name=" + last_name;
 
-            if (prefix && prefixName == "last_name")
-                queryURL += "&last_name=" + prefix[prefixName];
+            //if (prefix && prefixName == "last_name")
+            //    queryURL += "&last_name=" + prefix[prefixName];
 
             if (conference)
                 queryURL += "&conference=" + conference;
@@ -151,6 +151,32 @@ angular.module('pythonProjectsApp')
                 else
                     queryURL += "&order_mode=ascending";
             }
+
+            /*
+            *   Searching for every object in the search list in the tableState
+            *   object, when we get the key, with key name and value we make the query
+            *
+            * */
+            var prefix = query.prefix;
+            var prefixName;
+
+            if (prefix)
+                for (var i = 0; i < Object.keys(prefix).length; i++) {
+                    prefixName = Object.keys(prefix)[i];
+                    queryURL += "&" + prefixName + "=" + prefix[prefixName];
+                }
+
+            /*
+            *   Pagination, here we pass number of page items and number of page
+            * */
+            var page = query.page;
+            var pageSize = query.pageSize;
+
+            if (page)
+                if (pageSize)
+                    queryURL += "&page=" + page + "&page_size=" + pageSize;
+                else
+                    alert('You must put number of items per page.');
 
             return $http({
                 method: 'GET',
@@ -247,11 +273,25 @@ angular.module('pythonProjectsApp')
             });
         }
 
+        function getAllStarStatistics (id) {
+            return $http({
+                method: 'GET',
+                url: SERVER + "get-allstar/?format=json&player_id=" + id +
+                              "&order_by=all_star_year&order_mode=ascending"
+            })
+                .then(function(response) {
+                    return new Players(response.data)
+                }, function() {
+                    alert("-------- Error --------");
+                });
+        }
+
         return {
             getPlayers: getPlayers,
             getPlayer: getPlayer,
             getAllStarPlayersInfo: getAllStarPlayersInfo,
             getAllStarPlayersInfoOrder: getAllStarPlayersInfoOrder,
-            flags: flags
+            flags: flags,
+            getAllStarStatistics: getAllStarStatistics
         };
     }]);

@@ -243,7 +243,10 @@ angular.module('pythonProjectsApp')
             sortBy: '',
             sortReverse: '',
         //    Searching
-            prefix: null
+            prefix: null,
+        //    Pagination
+            page: '',
+            pageSize: ''
 
         };
 
@@ -273,8 +276,8 @@ angular.module('pythonProjectsApp')
 
             var pagination = self.tableState.pagination;
 
-            var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
-            var number = pagination.number || 10;  // Number of entries showed per page.
+            //var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
+            //var number = pagination.number || 10;  // Number of entries showed per page.
 
             var sortBy = self.tableState.sort.predicate;
             var sortReverse = self.tableState.sort.reverse;
@@ -296,36 +299,144 @@ angular.module('pythonProjectsApp')
             self.nbaAllStarQuery.sortReverse = sortReverse;
             self.nbaAllStarQuery.prefix = prefix;
 
-            NBAService.getPage(start, number, self.tableState, self.nbaAllStarQuery)
+            var pageSize = pagination.number;
+            var page = (pagination.start % (pageSize-1)) + 1;
+
+            self.nbaAllStarQuery.page = page;
+            self.nbaAllStarQuery.pageSize = pageSize;
+
+            NBAService.getPage(self.tableState, self.nbaAllStarQuery)
                 .then(function (result) {
                     self.nbaAllStarContext = result;
                     self.tableState.pagination.numberOfPages = 10;//set the number of pages so the pagination can update
                 });
         };
 
-        //self.sort = function (order) {
-        //    NBAService.getAllStarPlayersInfoOrder(self.nbaAllStarQuery, order, self.orderFlags);
-        //};
+        /** SEARCHING */
 
-        self.myData = [];
+        // Object for items searching in the table
+        self.nbaAllStarSearch = {
+            firstName: '',
+            lastName: '',
+            year: ''
+        };
+
+        // Number of items/rows by page
+        self.nbaTablePage = '';
+
+        /** DRAWING */
+
+        // With this flag we show form with graph and the other components
+        // Flag is set on TRUE when is clicked on the player
+        self.nbaAllStarDrawingFlag = false;
+
+        self.allStarData = [];
+        self.allStarYear = null;
+
+        // Radio buttons, we specified kind of diagram
         self.myChartOptions = {};
 
+        // Flags for specified statistics,
+        // we get those informations from the checkboxes
         self.drawFlags = {
             minutes: false,
             points: false,
             rebounds: false,
-            offensive: false,
-            defensive: false,
+            off_rebounds: false,
+            def_rebounds: false,
             assists: false,
             blocks: false,
             steals:false,
             turnovers: false
         };
 
-        //self.graphTypes
+        /** --------------  TESTING FUNCTIONALITY OF GRAPHS AND DIRECTIVES - START ---------- */
 
-        self.drawGraphAllStar = function () {
+            self.data =  [["January", 10], ["February", 8]] ;
 
+            self.dataComplicated = [[1, 2, 3], [2, 4, 6], [4, 8, 12]];
+            self.ticksComplicated = ['first', 'second', 'third'];
+
+        /** --------------  TESTING FUNCTIONALITY OF GRAPHS AND DIRECTIVES - END ---------- */
+
+
+        // List of players for draw
+        self.nbaAllStarDrawPlayers = NBAService.nbaAllStarDrawPlayers;
+
+        // Player statistics for all-star drawing
+        self.getAllStarStatistics = function (id) {
+            NBAService.getAllStarStatistics(id).then(function () {
+                //self.setAllStarData(self.nbaAllStarDrawPlayers);
+            });
+            self.nbaAllStarDrawingFlag = true;
+
+            // Here we set the data that pass into nbaAllStarDirective
+            var temp = self.setAllStarData(self.nbaAllStarDrawPlayers);
+            self.allStarData = temp.data;
+            self.allStarYear = temp.ticks;
         };
+
+        self.setAllStarData = function (tableData) {
+            // From object we get array of players
+            var players = tableData.players;
+
+            // Here we check the flag to make data
+            var flags = self.drawFlags;
+            var keys = Object.keys(flags);
+
+            //var dataCounter = 0;
+            var tempRow;
+
+            var data = [], ticks;
+
+            for (var i = 0; i < keys.length; i++) {
+                if (flags[keys[i]]) {
+                    tempRow = getColumn(players, keys[i]);
+                    data.push(tempRow);
+                }
+            }
+            ticks = getColumn(players, 'all_star_year');
+
+            return {
+                data: data,
+                ticks: ticks
+            }
+        };
+
+
+        function getColumn(object, field) {
+            // Array of objects and name of field must be defined
+            if (!object || !field)
+                return null;
+
+            // Here, we use try/catch block because maybe object doesn't contents
+            // specified field
+            try {
+                var column = [];
+                var tempElement;
+
+                for (var i = 0; i < object.length; i++) {
+                    tempElement = object[i][field];
+
+                    // Some elements of the table/object can be null
+                    // in that case we must put zero value into the our list
+
+                    // Not null value
+                    if (tempElement)
+                        column.push(tempElement);
+
+                    // Null value
+                    else
+                        column.push(0);
+                }
+            }
+            catch (ex) {
+                alert("Unsuccessfully read of data. Error " + ex);
+                return null;
+            }
+
+            return column;
+
+        }
 
     }]);

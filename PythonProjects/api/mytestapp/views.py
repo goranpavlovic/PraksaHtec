@@ -334,6 +334,7 @@ class PlayersPlayoffView(APIView):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+from types import *
 
 class PlayersAllStarView(APIView):
     #  Auxiliary method for statistics modes
@@ -391,6 +392,16 @@ class PlayersAllStarView(APIView):
 
         # Get all objects, all rows from Table All-Star
         objects = PlayersAllStar.objects.all()
+
+        # Here, we get the page size and offset of the table,
+        # we that use in the table pagination on the front end
+        page = request.GET.get(u'page')
+        page_size = request.GET.get(u'page_size')
+
+        # Variables that preserve information about the search criterion
+        search_first_name = request.GET.get(u'search_first_name')
+        search_last_name = request.GET.get(u'search_last_name')
+        search_year = request.GET.get(u'search_year')
 
         # Checking ordering
         if order_by is not None:
@@ -525,10 +536,14 @@ class PlayersAllStarView(APIView):
 
         if player_id is not None:
             objects = objects.filter(all_player=player_id)
+
         if first_name is not None:
-            objects = objects.filter(first_name__istartswith=first_name)
+            # First idea was prefix sql searching
+            # objects = objects.filter(first_name__istartswith=first_name)
+            objects = objects.filter(first_name__icontains=first_name)
+
         if last_name is not None:
-            objects = objects.filter(last_name__istartswith=last_name)
+            objects = objects.filter(last_name__icontains=last_name)
 
         if conference is not None:
             # Here we check name of conference
@@ -542,13 +557,47 @@ class PlayersAllStarView(APIView):
                 objects = objects.filter(conference=conference)
 
         if year is not None:
-            objects = objects.filter(all_star_year=year)
+            objects = objects.filter(all_star_year__icontains=year)
+
+        if search_first_name is not None:
+            objects = objects.filter(first_name__icontains=search_first_name)
+
+        if search_last_name is not None:
+            objects = objects.filter(last_name__icontains=search_last_name)
+
+        if search_year is not None:
+            if PlayersCareerView.is_integer(search_year):
+                objects = objects.filter(all_star_year__icontains=search_year)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST,
+                                data="Parameter for searching by year must be integer.")
+
+        if page is not None and page_size is not None:
+            # Checking type of page and page_size, must be integer
+            # Correct type
+            if PlayersCareerView.is_integer(page) and PlayersCareerView.is_integer(page_size):
+                # Correct integer value
+                page = int(page)
+                page_size = int(page_size)
+                if page > 0:
+                    offset = (page - 1) * page_size
+                    limit = offset + page_size
+                    objects = objects[offset:limit]
+
+                # Invalid integer value
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST,
+                                    data="Page must greater then zero. ")
+
+            # Invalid type
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST,
+                                data="Value of parameters page and page_size must be integer. ")
 
         serializer = PlayersAllStarSerializer(objects, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-from types import *
 
 
 class PlayersCareerView(APIView):
@@ -1127,3 +1176,24 @@ class TeamSeasonView(APIView):
         serializer = TeamSeasonSerializer(objects, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class TeamSeasonViewTwo(APIView):
+    def get(self, request, format=None):
+        rebounds = request.GET.get(u'rebounds')
+
+        objects = TeamSeason.objects
+
+        if rebounds is not None:
+            objects = objects.filter(o_reb__gte=rebounds)
+
+        # objects = objects.values_list('year', flat=True).order_by('year')
+
+        serializer = TeamSeasonSerializer(objects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+
+

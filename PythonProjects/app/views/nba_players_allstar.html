@@ -82,11 +82,16 @@
 </div>
 <br> <br>
 <!-- Table -->
+<div class="allStarPage" ng-show="nba.allStarTable">
+    <span>Rows by page</span>
+    <input size="73px" ng-model="nba.nbaTablePage">
+</div>
 <div id="table_style" ng-show="nba.allStarTable">
     <table st-table="nba.nbaAllStarContext"
            st-pipe="nba.callServerAllStar">
         <thead>
             <tr>
+                <th><!-- Empty field for checkbox--></th>
                 <th st-sort="all_player">Player ID</th>
                 <th st-sort="first_name">First Name</th>
                 <th st-sort="last_name">Last Name</th>
@@ -103,10 +108,11 @@
                 <th st-sort="turnovers">Turnovers</th>
             </tr>
             <tr>
+                <th><!-- Empty field for checkbox --></th>
                 <th><!--input st-search="all_player"/--></th>
-                <th><input st-search="first_name"></th>
-                <th><input st-search="last_name"></th>
-                <th></th>
+                <th><input st-search="search_first_name" ng-model="nba.nbaAllStarSearch.firstName"></th>
+                <th><input st-search="search_last_name" ng-model="nba.nbaAllStarSearch.lastName"></th>
+                <th><input st-search="search_year" ng-model="nba.nbaAllStarSearch.year"></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -120,11 +126,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="alt" ng-repeat="player in nba.nbaAllStarContext">
+            <tr class="alt" ng-repeat="player in nba.nbaAllStarContext"
+                            ng-click="nba.getAllStarStatistics(player.all_player)">
+                <td cs-select="player"></td>
                 <td>{{ player.all_player }}</td>
-                <td>{{ player.first_name }}</td>
-                <td>{{ player.last_name }}</td>
-                <td>{{ player.all_star_year }}</td>
+                <td><span ng-bind-html="player.first_name | searchFilter:nba.nbaAllStarSearch.firstName"></span></td>
+                <td><span ng-bind-html="player.last_name | searchFilter:nba.nbaAllStarSearch.lastName"></span></td>
+                <td><span ng-bind-html="player.all_star_year | searchFilter:nba.nbaAllStarSearch.year"></span></td>
                 <td>{{ player.conference }}</td>
                 <td>{{ player.minutes }}</td>
                 <td>{{ player.points }}</td>
@@ -137,46 +145,93 @@
                 <td>{{ player.turnovers }}</td>
             </tr>
         </tbody>
+        <!-- Pagination -->
+        <tfoot>
+               <tr>
+                   <td colspan="3" class="text-center">
+                       <div st-pagination="" st-items-by-page="nba.nbaTablePage" st-displayed-pages="5"></div>
+                   </td>
+               </tr>
+        </tfoot>
     </table>
 </div>
+<br> <br>
+<!-- TESTING nba.nbaAllStarDrawPlayers - START-->
+<!--div>
+    <table>
+        <tr>
+            <th> First Name</th>
+            <th> Last Name</th>
+        </tr>
+        <tr ng-repeat="player in nba.nbaAllStarDrawPlayers.players">
+            <td>{{ player.first_name }}</td>
+            <td>{{ player.last_name }}</td>
+        </tr>
+    </table>
+</div>
+<!-- TESTING nba.nbaAllStarPlayersDraw - END -->
+<br><br>
 <!-- Graph statistics -->
-<div>
-    <fieldset>
-        <!-- CHECKBOX -->
-        <div>
-            <ng-form>
-                <!-- For all stats -->
-                <div>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.minutes">Minutes</label><br>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.points">Points</label><br>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.assists">Assists</label><br>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.steals">Steals</label><br>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.blocks">Blocks</label><br>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.turnovers">Turnovers</label><br>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.rebounds">Rebounds</label><br>
+<div class="allStarGraph" ng-show="nba.nbaAllStarDrawingFlag">
+    <fieldset class="allStarFieldSet">
+        <!-- CHECKBOX AND RADIO -->
+        <div class="allStarLeft">
+            <!-- CHECKBOX -->
+            <div>
+                <ng-form>
+                    <!-- For all stats -->
+                    <div>
+                        <p>Statistics</p>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.minutes"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Minutes</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.points"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Points</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.assists"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Assists</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.steals"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Steals</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.blocks"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Blocks</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.turnovers"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Turnovers</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.rebounds"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Rebounds</label><br>
+                    </div>
+                    <br>
+                    <!-- For rebounds -->
+                    <div ng-show="nba.drawFlags.rebounds">
+                        <label><input type="checkbox" ng-model="nba.drawFlags.off_rebounds"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Offensive</label><br>
+                        <label><input type="checkbox" ng-model="nba.drawFlags.def_rebounds"
+                                                      ng-click="nba.getAllStarStatistics(nba.nbaAllStarDrawPlayers.players[0].all_player)">Defensive</label>
+                    </div>
+                </ng-form>
+            </div>
+            <!-- RADIO -->
+            <div>
+                <!-- RADIO BUTTON - Graph types -->
+                <div id="left">
+                    <p>Graph Type</p>
+                    <label><input type="radio"></label><br>
+                    <label><input type="radio"></label><br>
+                    <label><input type="radio"></label><br>
+                    <label><input type="radio"></label><br>
+                    <label><input type="radio"></label><br>
                 </div>
-                <br>
-                <!-- For rebounds -->
-                <div ng-show="nba.drawFlags.rebounds">
-                    <label><input type="checkbox" ng-model="nba.drawFlags.offensive">Offensive Rebounds</label>
-                    <label><input type="checkbox" ng-model="nba.drawFlags.defensive">Defensive Rebounds</label>
-                </div>
-            </ng-form>
+            </div>
         </div>
-        <!-- GRAPH AND RADIO -->
-        <div>
-            <!-- GRAPH -->
-            <div id="left">
 
-            </div>
-            <!-- RADIO BUTTON - Graph types -->
-            <div id="left">
-                <label><input type="radio"></label><br>
-                <label><input type="radio"></label><br>
-                <label><input type="radio"></label><br>
-                <label><input type="radio"></label><br>
-                <label><input type="radio"></label><br>
-            </div>
+        <!-- GRAPH -->
+        <div class="allStarLeft">
+            <!--nba-all-star-graph data="nba.allStarData" ticks="nba.allStarYear"></nba-all-star-graph-->
+            <!--nba-all-star-graph></nba-all-star-graph-->
+            <!--nba-all-star-graph data = nba.data></nba-all-star-graph-->
+            <!--nba-all-star-graph data="nba.dataComplicated" ticks="nba.ticksComplicated"></nba-all-star-graph-->
+            <nba-all-star-graph data="nba.allStarData"
+                                ticks="nba.allStarYear"
+                                title="nba.nbaAllStarDrawPlayers.players[0].first_name + ' ' + nba.nbaAllStarDrawPlayers.players[0].last_name">
+
+            </nba-all-star-graph>
         </div>
     </fieldset>
 </div>

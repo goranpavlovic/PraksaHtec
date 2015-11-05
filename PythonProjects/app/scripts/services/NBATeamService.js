@@ -67,6 +67,6 @@ angular.module('pythonProjectsApp')
                         return data.teams;
                     });
 
-            }
+            };
 
         } ]);

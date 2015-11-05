@@ -19,6 +19,7 @@
     <orderEntry type="module" module-name="Basketball" />
     <orderEntry type="module" module-name="stats" />
     <orderEntry type="module" module-name="LinesProject" />
+    <orderEntry type="module" module-name="MongoProjects" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

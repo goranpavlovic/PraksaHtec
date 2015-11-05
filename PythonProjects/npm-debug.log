@@ -1,286 +1,320 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'bower' ]
 2 info using npm@2.14.2
 3 info using node@v4.0.0
-4 verbose readDependencies loading dependencies from /home/vladimir/Documents/PraksaHtec/PythonProjects/package.json
-5 verbose install where, deps [ '/home/vladimir/Documents/PraksaHtec/PythonProjects',
-5 verbose install   [ 'grunt',
-5 verbose install     'grunt-angular-templates',
-5 verbose install     'grunt-autoprefixer',
-5 verbose install     'grunt-concurrent',
-5 verbose install     'grunt-contrib-clean',
-5 verbose install     'grunt-contrib-concat',
-5 verbose install     'grunt-contrib-connect',
-5 verbose install     'grunt-contrib-copy',
-5 verbose install     'grunt-contrib-cssmin',
-5 verbose install     'grunt-contrib-htmlmin',
-5 verbose install     'grunt-contrib-imagemin',
-5 verbose install     'grunt-contrib-jshint',
-5 verbose install     'grunt-contrib-uglify',
-5 verbose install     'grunt-contrib-watch',
-5 verbose install     'grunt-filerev',
-5 verbose install     'grunt-google-cdn',
-5 verbose install     'grunt-karma',
-5 verbose install     'grunt-newer',
-5 verbose install     'grunt-ng-annotate',
-5 verbose install     'grunt-svgmin',
-5 verbose install     'grunt-usemin',
-5 verbose install     'grunt-wiredep',
-5 verbose install     'jit-grunt',
-5 verbose install     'jshint-stylish',
-5 verbose install     'karma-jasmine',
-5 verbose install     'karma-phantomjs-launcher',
-5 verbose install     'time-grunt' ] ]
-6 verbose install where, peers [ '/home/vladimir/Documents/PraksaHtec/PythonProjects', [] ]
-7 verbose installManyTop reading for lifecycle /home/vladimir/Documents/PraksaHtec/PythonProjects/package.json
-8 info preinstall pythonprojects@
-9 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt/package.json
-10 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-angular-templates/package.json
-11 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-autoprefixer/package.json
-12 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-concurrent/package.json
-13 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-clean/package.json
-14 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-concat/package.json
-15 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-connect/package.json
-16 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-copy/package.json
-17 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-cssmin/package.json
-18 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-htmlmin/package.json
-19 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-imagemin/package.json
-20 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-jshint/package.json
-21 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-uglify/package.json
-22 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-watch/package.json
-23 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-filerev/package.json
-24 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-google-cdn/package.json
-25 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-karma/package.json
-26 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-newer/package.json
-27 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-ng-annotate/package.json
-28 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-svgmin/package.json
-29 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-usemin/package.json
-30 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-wiredep/package.json
-31 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jasmine-core/package.json
-32 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jit-grunt/package.json
-33 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jshint-stylish/package.json
-34 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma/package.json
-35 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma-jasmine/package.json
-36 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma-phantomjs-launcher/package.json
-37 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/phantomjs/package.json
-38 verbose installManyTop reading scoped package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/time-grunt/package.json
-39 info package.json grunt-contrib-copy@0.7.0 No license field.
-40 info package.json grunt-contrib-connect@0.9.0 No license field.
-41 info package.json grunt@0.4.5 No license field.
-42 info package.json grunt-angular-templates@0.5.7 No license field.
-43 info package.json grunt-contrib-clean@0.6.0 No license field.
-44 info package.json grunt-contrib-concat@0.5.1 No license field.
-45 info package.json grunt-contrib-cssmin@0.12.3 No license field.
-46 info package.json grunt-contrib-htmlmin@0.4.0 No license field.
-47 info package.json grunt-contrib-imagemin@0.9.4 No license field.
-48 info package.json grunt-contrib-uglify@0.7.0 No license field.
-49 info package.json grunt-contrib-watch@0.6.1 No license field.
-50 info package.json grunt-filerev@2.3.1 license should be a valid SPDX license expression
-51 info package.json grunt-google-cdn@0.4.3 license should be a valid SPDX license expression
-52 info package.json grunt-svgmin@2.0.1 No license field.
-53 info package.json grunt-wiredep@2.0.0 No license field.
-54 verbose readDependencies loading dependencies from /home/vladimir/Documents/PraksaHtec/PythonProjects/package.json
-55 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt/package.json
-56 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-angular-templates/package.json
-57 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-autoprefixer/package.json
-58 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-concurrent/package.json
-59 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-clean/package.json
-60 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-concat/package.json
-61 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-connect/package.json
-62 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-copy/package.json
-63 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-cssmin/package.json
-64 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-htmlmin/package.json
-65 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-imagemin/package.json
-66 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-jshint/package.json
-67 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-uglify/package.json
-68 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-contrib-watch/package.json
-69 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-filerev/package.json
-70 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-google-cdn/package.json
-71 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-karma/package.json
-72 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-newer/package.json
-73 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-ng-annotate/package.json
-74 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-svgmin/package.json
-75 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-usemin/package.json
-76 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/grunt-wiredep/package.json
-77 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jasmine-core/package.json
-78 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jit-grunt/package.json
-79 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jshint-stylish/package.json
-80 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma/package.json
-81 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma-jasmine/package.json
-82 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma-phantomjs-launcher/package.json
-83 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/phantomjs/package.json
-84 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/time-grunt/package.json
-85 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/karma/package.json
-86 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/karma.cmd/package.json
-87 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/phantomjs/package.json
-88 verbose targetResolver reading package data from /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/phantomjs.cmd/package.json
-89 verbose already installed skipping grunt-newer@^1.1.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-90 verbose already installed skipping grunt-ng-annotate@^0.9.2 /home/vladimir/Documents/PraksaHtec/PythonProjects
-91 verbose already installed skipping grunt-svgmin@^2.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-92 verbose already installed skipping grunt-usemin@^3.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-93 verbose already installed skipping grunt-wiredep@^2.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-94 verbose already installed skipping jit-grunt@^0.9.1 /home/vladimir/Documents/PraksaHtec/PythonProjects
-95 verbose already installed skipping jshint-stylish@^1.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-96 verbose already installed skipping karma-jasmine@* /home/vladimir/Documents/PraksaHtec/PythonProjects
-97 verbose already installed skipping karma-phantomjs-launcher@* /home/vladimir/Documents/PraksaHtec/PythonProjects
-98 verbose already installed skipping time-grunt@^1.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-99 verbose already installed skipping grunt@^0.4.5 /home/vladimir/Documents/PraksaHtec/PythonProjects
-100 verbose already installed skipping grunt-angular-templates@^0.5.7 /home/vladimir/Documents/PraksaHtec/PythonProjects
-101 verbose already installed skipping grunt-autoprefixer@^2.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-102 verbose already installed skipping grunt-concurrent@^1.0.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-103 verbose already installed skipping grunt-contrib-clean@^0.6.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-104 verbose already installed skipping grunt-contrib-concat@^0.5.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-105 verbose already installed skipping grunt-contrib-connect@^0.9.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-106 verbose already installed skipping grunt-contrib-copy@^0.7.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-107 verbose already installed skipping grunt-contrib-cssmin@^0.12.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-108 verbose already installed skipping grunt-contrib-htmlmin@^0.4.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-109 verbose already installed skipping grunt-contrib-imagemin@^0.9.2 /home/vladimir/Documents/PraksaHtec/PythonProjects
-110 verbose already installed skipping grunt-contrib-jshint@^0.11.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-111 verbose already installed skipping grunt-contrib-uglify@^0.7.0 /home/vladimir/Documents/PraksaHtec/PythonProjects
-112 verbose already installed skipping grunt-contrib-watch@^0.6.1 /home/vladimir/Documents/PraksaHtec/PythonProjects
-113 verbose already installed skipping grunt-filerev@^2.1.2 /home/vladimir/Documents/PraksaHtec/PythonProjects
-114 verbose already installed skipping grunt-google-cdn@^0.4.3 /home/vladimir/Documents/PraksaHtec/PythonProjects
-115 verbose already installed skipping grunt-karma@* /home/vladimir/Documents/PraksaHtec/PythonProjects
-116 silly install resolved []
-117 info build /home/vladimir/Documents/PraksaHtec/PythonProjects
-118 info linkStuff pythonprojects@
-119 silly linkStuff pythonprojects@ has /home/vladimir/Documents/PraksaHtec as its parent node_modules
-120 verbose linkBins pythonprojects@
-121 verbose linkMans pythonprojects@
-122 verbose rebuildBundles pythonprojects@
-123 verbose rebuildBundles [ '.bin',
-123 verbose rebuildBundles   'grunt',
-123 verbose rebuildBundles   'grunt-angular-templates',
-123 verbose rebuildBundles   'grunt-autoprefixer',
-123 verbose rebuildBundles   'grunt-concurrent',
-123 verbose rebuildBundles   'grunt-contrib-clean',
-123 verbose rebuildBundles   'grunt-contrib-concat',
-123 verbose rebuildBundles   'grunt-contrib-connect',
-123 verbose rebuildBundles   'grunt-contrib-copy',
-123 verbose rebuildBundles   'grunt-contrib-cssmin',
-123 verbose rebuildBundles   'grunt-contrib-htmlmin',
-123 verbose rebuildBundles   'grunt-contrib-imagemin',
-123 verbose rebuildBundles   'grunt-contrib-jshint',
-123 verbose rebuildBundles   'grunt-contrib-uglify',
-123 verbose rebuildBundles   'grunt-contrib-watch',
-123 verbose rebuildBundles   'grunt-filerev',
-123 verbose rebuildBundles   'grunt-google-cdn',
-123 verbose rebuildBundles   'grunt-karma',
-123 verbose rebuildBundles   'grunt-newer',
-123 verbose rebuildBundles   'grunt-ng-annotate',
-123 verbose rebuildBundles   'grunt-svgmin',
-123 verbose rebuildBundles   'grunt-usemin',
-123 verbose rebuildBundles   'grunt-wiredep',
-123 verbose rebuildBundles   'jasmine-core',
-123 verbose rebuildBundles   'jit-grunt',
-123 verbose rebuildBundles   'jshint-stylish',
-123 verbose rebuildBundles   'karma',
-123 verbose rebuildBundles   'karma-jasmine',
-123 verbose rebuildBundles   'karma-phantomjs-launcher',
-123 verbose rebuildBundles   'phantomjs',
-123 verbose rebuildBundles   'time-grunt' ]
-124 verbose rebuild bundle /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jasmine-core
-125 info build /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/jasmine-core
-126 info preinstall jasmine-core@2.3.4
-127 info linkStuff jasmine-core@2.3.4
-128 silly linkStuff jasmine-core@2.3.4 has /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules as its parent node_modules
-129 verbose linkBins jasmine-core@2.3.4
-130 verbose linkMans jasmine-core@2.3.4
-131 verbose rebuildBundles jasmine-core@2.3.4
-132 info install jasmine-core@2.3.4
-133 info postinstall jasmine-core@2.3.4
-134 verbose rebuild bundle /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma
-135 info build /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/karma
-136 info preinstall karma@0.13.9
-137 info linkStuff karma@0.13.9
-138 silly linkStuff karma@0.13.9 has /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules as its parent node_modules
-139 verbose linkBins karma@0.13.9
-140 verbose link bins [ { karma: './bin/karma' },
-140 verbose link bins   '/home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin',
-140 verbose link bins   false ]
-141 verbose linkMans karma@0.13.9
-142 verbose rebuildBundles karma@0.13.9
-143 verbose rebuildBundles [ '.bin',
-143 verbose rebuildBundles   'bluebird',
-143 verbose rebuildBundles   'body-parser',
-143 verbose rebuildBundles   'chokidar',
-143 verbose rebuildBundles   'colors',
-143 verbose rebuildBundles   'connect',
-143 verbose rebuildBundles   'core-js',
-143 verbose rebuildBundles   'di',
-143 verbose rebuildBundles   'dom-serialize',
-143 verbose rebuildBundles   'expand-braces',
-143 verbose rebuildBundles   'glob',
-143 verbose rebuildBundles   'graceful-fs',
-143 verbose rebuildBundles   'http-proxy',
-143 verbose rebuildBundles   'lodash',
-143 verbose rebuildBundles   'log4js',
-143 verbose rebuildBundles   'memoizee',
-143 verbose rebuildBundles   'mime',
-143 verbose rebuildBundles   'minimatch',
-143 verbose rebuildBundles   'optimist',
-143 verbose rebuildBundles   'rimraf',
-143 verbose rebuildBundles   'socket.io',
-143 verbose rebuildBundles   'source-map',
-143 verbose rebuildBundles   'useragent' ]
-144 silly gentlyRm /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/karma is being purged
-145 verbose gentlyRm don't care about contents; nuking /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/karma
-146 silly vacuum-fs purging /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/karma
-147 silly vacuum-fs quitting because other entries in /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin
-148 info install karma@0.13.9
-149 info postinstall karma@0.13.9
-150 verbose rebuild bundle /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/phantomjs
-151 info build /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/phantomjs
-152 info preinstall phantomjs@1.9.18
-153 info linkStuff phantomjs@1.9.18
-154 silly linkStuff phantomjs@1.9.18 has /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules as its parent node_modules
-155 verbose linkBins phantomjs@1.9.18
-156 verbose link bins [ { phantomjs: './bin/phantomjs' },
-156 verbose link bins   '/home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin',
-156 verbose link bins   false ]
-157 verbose linkMans phantomjs@1.9.18
-158 verbose rebuildBundles phantomjs@1.9.18
-159 verbose rebuildBundles [ '.bin',
-159 verbose rebuildBundles   'adm-zip',
-159 verbose rebuildBundles   'fs-extra',
-159 verbose rebuildBundles   'kew',
-159 verbose rebuildBundles   'npmconf',
-159 verbose rebuildBundles   'progress',
-159 verbose rebuildBundles   'request',
-159 verbose rebuildBundles   'request-progress',
-159 verbose rebuildBundles   'which' ]
-160 silly gentlyRm /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/phantomjs is being purged
-161 verbose gentlyRm don't care about contents; nuking /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/phantomjs
-162 silly vacuum-fs purging /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin/phantomjs
-163 silly vacuum-fs quitting because other entries in /home/vladimir/Documents/PraksaHtec/PythonProjects/node_modules/.bin
-164 info install phantomjs@1.9.18
-165 verbose unsafe-perm in lifecycle false
-166 info phantomjs@1.9.18 Failed to exec install script
-167 verbose stack Error: phantomjs@1.9.18 install: `node install.js`
-167 verbose stack Exit status 1
-167 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
-167 verbose stack     at emitTwo (events.js:87:13)
-167 verbose stack     at EventEmitter.emit (events.js:172:7)
-167 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-167 verbose stack     at emitTwo (events.js:87:13)
-167 verbose stack     at ChildProcess.emit (events.js:172:7)
-167 verbose stack     at maybeClose (internal/child_process.js:817:16)
-167 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-168 verbose pkgid phantomjs@1.9.18
-169 verbose cwd /home/vladimir/Documents/PraksaHtec/PythonProjects
-170 error Linux 3.13.0-62-generic
-171 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
-172 error node v4.0.0
-173 error npm  v2.14.2
-174 error code ELIFECYCLE
-175 error phantomjs@1.9.18 install: `node install.js`
-175 error Exit status 1
-176 error Failed at the phantomjs@1.9.18 install script 'node install.js'.
-176 error This is most likely a problem with the phantomjs package,
-176 error not with npm itself.
-176 error Tell the author that this fails on your system:
-176 error     node install.js
-176 error You can get their info via:
-176 error     npm owner ls phantomjs
-176 error There is likely additional logging output above.
-177 verbose exit [ 1, true ]
+4 verbose install initial load of /usr/local/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+6 silly cache add args [ 'bower', null ]
+7 verbose cache add spec bower
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'bower',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'bower',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: '*',
+8 silly cache add   type: 'range' }
+9 silly addNamed bower@*
+10 verbose addNamed "*" is a valid semver range for bower
+11 silly addNameRange { name: 'bower', range: '*', hasData: false }
+12 silly mapToRegistry name bower
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/bower
+16 verbose addNameRange registry:https://registry.npmjs.org/bower not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/bower
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 3:54:29 PM
+20 verbose request id cc07f5f9bfa00cac
+21 verbose etag "BWV73V8ZTPVRGMNI1EYSE0Y42"
+22 http request GET https://registry.npmjs.org/bower
+23 http 304 https://registry.npmjs.org/bower
+24 silly get cb [ 304,
+24 silly get   { date: 'Thu, 29 Oct 2015 14:54:29 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     'cache-control': 'max-age=60',
+24 silly get     etag: '"BWV73V8ZTPVRGMNI1EYSE0Y42"',
+24 silly get     age: '37',
+24 silly get     connection: 'keep-alive',
+24 silly get     'x-served-by': 'cache-fra1234-FRA',
+24 silly get     'x-cache': 'HIT',
+24 silly get     'x-cache-hits': '1',
+24 silly get     'x-timer': 'S1446130469.295946,VS0,VE0',
+24 silly get     vary: 'Accept' } ]
+25 verbose etag https://registry.npmjs.org/bower from cache
+26 verbose get saving bower to /home/vladimir/.npm/registry.npmjs.org/bower/.cache.json
+27 silly addNameRange number 2 { name: 'bower', range: '*', hasData: true }
+28 silly addNameRange versions [ 'bower',
+28 silly addNameRange   [ '0.1.0',
+28 silly addNameRange     '0.1.2',
+28 silly addNameRange     '0.1.3',
+28 silly addNameRange     '0.2.0',
+28 silly addNameRange     '0.3.0',
+28 silly addNameRange     '0.3.1',
+28 silly addNameRange     '0.3.2',
+28 silly addNameRange     '0.4.0',
+28 silly addNameRange     '0.5.0',
+28 silly addNameRange     '0.5.1',
+28 silly addNameRange     '0.6.0',
+28 silly addNameRange     '0.6.1',
+28 silly addNameRange     '0.6.2',
+28 silly addNameRange     '0.6.3',
+28 silly addNameRange     '0.6.4',
+28 silly addNameRange     '0.6.5',
+28 silly addNameRange     '0.6.6',
+28 silly addNameRange     '0.6.7',
+28 silly addNameRange     '0.6.8',
+28 silly addNameRange     '0.7.0',
+28 silly addNameRange     '0.7.1',
+28 silly addNameRange     '0.8.0',
+28 silly addNameRange     '0.8.1',
+28 silly addNameRange     '0.8.2',
+28 silly addNameRange     '0.8.3',
+28 silly addNameRange     '0.8.4',
+28 silly addNameRange     '0.8.5',
+28 silly addNameRange     '0.8.6',
+28 silly addNameRange     '0.9.0',
+28 silly addNameRange     '0.9.1',
+28 silly addNameRange     '0.9.2',
+28 silly addNameRange     '0.10.0',
+28 silly addNameRange     '1.0.0',
+28 silly addNameRange     '1.0.1',
+28 silly addNameRange     '1.0.2',
+28 silly addNameRange     '1.0.3',
+28 silly addNameRange     '1.1.0',
+28 silly addNameRange     '1.1.1',
+28 silly addNameRange     '1.1.2',
+28 silly addNameRange     '1.2.0',
+28 silly addNameRange     '1.2.1',
+28 silly addNameRange     '1.2.2',
+28 silly addNameRange     '1.2.3',
+28 silly addNameRange     '1.2.4',
+28 silly addNameRange     '1.2.5',
+28 silly addNameRange     '1.2.6',
+28 silly addNameRange     '1.2.7',
+28 silly addNameRange     '1.2.8',
+28 silly addNameRange     '1.3.0',
+28 silly addNameRange     '1.3.1',
+28 silly addNameRange     '1.3.2',
+28 silly addNameRange     '1.3.3',
+28 silly addNameRange     '1.3.4',
+28 silly addNameRange     '1.3.5',
+28 silly addNameRange     '1.3.6',
+28 silly addNameRange     '1.3.7',
+28 silly addNameRange     '1.3.8',
+28 silly addNameRange     '1.3.9',
+28 silly addNameRange     '1.3.10',
+28 silly addNameRange     '1.3.11',
+28 silly addNameRange     '1.3.12',
+28 silly addNameRange     '1.4.0',
+28 silly addNameRange     '1.4.1',
+28 silly addNameRange     '1.5.0',
+28 silly addNameRange     '1.5.1',
+28 silly addNameRange     '1.5.2',
+28 silly addNameRange     '1.5.3',
+28 silly addNameRange     '1.6.2',
+28 silly addNameRange     '1.6.3',
+28 silly addNameRange     '1.6.4',
+28 silly addNameRange     '1.6.5' ] ]
+29 silly addNamed bower@1.6.5
+30 verbose addNamed "1.6.5" is a plain semver version for bower
+31 silly cache afterAdd bower@1.6.5
+32 verbose afterAdd /home/vladimir/.npm/bower/1.6.5/package/package.json not in flight; writing
+33 verbose afterAdd /home/vladimir/.npm/bower/1.6.5/package/package.json written
+34 silly install resolved [ { name: 'bower',
+34 silly install resolved     version: '1.6.5',
+34 silly install resolved     description: 'The browser package manager',
+34 silly install resolved     author: { name: 'Twitter' },
+34 silly install resolved     license: 'MIT',
+34 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/bower/bower.git' },
+34 silly install resolved     main: 'lib',
+34 silly install resolved     homepage: 'http://bower.io',
+34 silly install resolved     engines: { node: '>=0.10.0' },
+34 silly install resolved     keywords: [ 'bower' ],
+34 silly install resolved     dependencies:
+34 silly install resolved      { abbrev: '^1.0.5',
+34 silly install resolved        archy: '1.0.0',
+34 silly install resolved        'bower-config': '^1.2.2',
+34 silly install resolved        'bower-endpoint-parser': '^0.2.2',
+34 silly install resolved        'bower-json': '^0.4.0',
+34 silly install resolved        'bower-logger': '^0.2.2',
+34 silly install resolved        'bower-registry-client': '^1.0.0',
+34 silly install resolved        cardinal: '0.4.4',
+34 silly install resolved        chalk: '^1.0.0',
+34 silly install resolved        chmodr: '^1.0.2',
+34 silly install resolved        configstore: '^0.3.2',
+34 silly install resolved        'decompress-zip': '^0.1.0',
+34 silly install resolved        destroy: '^1.0.3',
+34 silly install resolved        'fs-write-stream-atomic': '^1.0.4',
+34 silly install resolved        fstream: '^1.0.3',
+34 silly install resolved        'fstream-ignore': '^1.0.2',
+34 silly install resolved        github: '^0.2.3',
+34 silly install resolved        glob: '^4.3.2',
+34 silly install resolved        'graceful-fs': '^3.0.5',
+34 silly install resolved        handlebars: '^2.0.0',
+34 silly install resolved        inquirer: '0.10.0',
+34 silly install resolved        insight: '^0.7.0',
+34 silly install resolved        'is-root': '^1.0.0',
+34 silly install resolved        junk: '^1.0.0',
+34 silly install resolved        lockfile: '^1.0.0',
+34 silly install resolved        'lru-cache': '^2.5.0',
+34 silly install resolved        'md5-hex': '^1.0.2',
+34 silly install resolved        mkdirp: '0.5.0',
+34 silly install resolved        mout: '^0.11.0',
+34 silly install resolved        nopt: '^3.0.1',
+34 silly install resolved        opn: '^1.0.1',
+34 silly install resolved        'p-throttler': '0.1.1',
+34 silly install resolved        promptly: '0.2.0',
+34 silly install resolved        q: '^1.1.2',
+34 silly install resolved        request: '2.53.0',
+34 silly install resolved        'request-progress': '0.3.1',
+34 silly install resolved        retry: '0.6.1',
+34 silly install resolved        rimraf: '^2.2.8',
+34 silly install resolved        semver: '^2.3.0',
+34 silly install resolved        'shell-quote': '^1.4.2',
+34 silly install resolved        'stringify-object': '^1.0.0',
+34 silly install resolved        'tar-fs': '^1.4.1',
+34 silly install resolved        tmp: '0.0.24',
+34 silly install resolved        'update-notifier': '^0.3.0',
+34 silly install resolved        'user-home': '^1.1.0',
+34 silly install resolved        which: '^1.0.8' },
+34 silly install resolved     devDependencies:
+34 silly install resolved      { chai: '^1.10.0',
+34 silly install resolved        coveralls: '^2.11.2',
+34 silly install resolved        'expect.js': '^0.3.1',
+34 silly install resolved        grunt: '^0.4.5',
+34 silly install resolved        'grunt-cli': '^0.1.13',
+34 silly install resolved        'grunt-contrib-jshint': '^0.10.0',
+34 silly install resolved        'grunt-contrib-watch': '^0.6.1',
+34 silly install resolved        'grunt-exec': '^0.4.6',
+34 silly install resolved        'grunt-simple-mocha': '^0.4.0',
+34 silly install resolved        istanbul: '^0.3.5',
+34 silly install resolved        'load-grunt-tasks': '^2.0.0',
+34 silly install resolved        mocha: '^2.1.0',
+34 silly install resolved        multiline: '^1.0.2',
+34 silly install resolved        nock: '^2.13.0',
+34 silly install resolved        'node-uuid': '^1.4.2',
+34 silly install resolved        'npm-shrinkwrap': '^5.4.1',
+34 silly install resolved        proxyquire: '^1.3.0',
+34 silly install resolved        'spawn-sync': '^1.0.5' },
+34 silly install resolved     scripts: { test: 'grunt test' },
+34 silly install resolved     bin: { bower: 'bin/bower' },
+34 silly install resolved     files: [ 'bin', 'lib', 'templates' ],
+34 silly install resolved     gitHead: 'a022cdc75ee0693af813a87b40f5de4c74b7baae',
+34 silly install resolved     bugs: { url: 'https://github.com/bower/bower/issues' },
+34 silly install resolved     bundleDependencies:
+34 silly install resolved      [ 'abbrev',
+34 silly install resolved        'archy',
+34 silly install resolved        'bower-config',
+34 silly install resolved        'bower-endpoint-parser',
+34 silly install resolved        'bower-json',
+34 silly install resolved        'bower-logger',
+34 silly install resolved        'bower-registry-client',
+34 silly install resolved        'cardinal',
+34 silly install resolved        'chalk',
+34 silly install resolved        'chmodr',
+34 silly install resolved        'configstore',
+34 silly install resolved        'decompress-zip',
+34 silly install resolved        'destroy',
+34 silly install resolved        'fs-write-stream-atomic',
+34 silly install resolved        'fstream',
+34 silly install resolved        'fstream-ignore',
+34 silly install resolved        'github',
+34 silly install resolved        'glob',
+34 silly install resolved        'graceful-fs',
+34 silly install resolved        'handlebars',
+34 silly install resolved        'inquirer',
+34 silly install resolved        'insight',
+34 silly install resolved        'is-root',
+34 silly install resolved        'junk',
+34 silly install resolved        'lockfile',
+34 silly install resolved        'lru-cache',
+34 silly install resolved        'md5-hex',
+34 silly install resolved        'mkdirp',
+34 silly install resolved        'mout',
+34 silly install resolved        'nopt',
+34 silly install resolved        'opn',
+34 silly install resolved        'p-throttler',
+34 silly install resolved        'promptly',
+34 silly install resolved        'q',
+34 silly install resolved        'request',
+34 silly install resolved        'request-progress',
+34 silly install resolved        'retry',
+34 silly install resolved        'rimraf',
+34 silly install resolved        'semver',
+34 silly install resolved        'shell-quote',
+34 silly install resolved        'stringify-object',
+34 silly install resolved        'tar-fs',
+34 silly install resolved        'tmp',
+34 silly install resolved        'update-notifier',
+34 silly install resolved        'user-home',
+34 silly install resolved        'which' ],
+34 silly install resolved     _id: 'bower@1.6.5',
+34 silly install resolved     _shasum: '59d457122a161e42cc1625bbab8179c214b7ac11',
+34 silly install resolved     _from: 'bower@*',
+34 silly install resolved     _npmVersion: '2.14.8',
+34 silly install resolved     _nodeVersion: '4.1.1',
+34 silly install resolved     _npmUser: { name: 'sheerun', email: 'sheerun@sher.pl' },
+34 silly install resolved     dist:
+34 silly install resolved      { shasum: '59d457122a161e42cc1625bbab8179c214b7ac11',
+34 silly install resolved        tarball: 'http://registry.npmjs.org/bower/-/bower-1.6.5.tgz' },
+34 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+34 silly install resolved     directories: {},
+34 silly install resolved     _resolved: 'https://registry.npmjs.org/bower/-/bower-1.6.5.tgz',
+34 silly install resolved     readme: 'ERROR: No README data found!' } ]
+35 info install bower@1.6.5 into /usr/local/lib
+36 info installOne bower@1.6.5
+37 verbose installOne of bower to /usr/local/lib not in flight; installing
+38 verbose lock using /home/vladimir/.npm/_locks/bower-e8debc5417026b57.lock for /usr/local/lib/node_modules/bower
+39 silly install write writing bower 1.6.5 to /usr/local/lib/node_modules/bower
+40 verbose unbuild lib/node_modules/bower
+41 info preuninstall bower@1.5.2
+42 info uninstall bower@1.5.2
+43 verbose unbuild rmStuff bower@1.5.2 from /usr/local/lib/node_modules
+44 silly gentlyRm /usr/local/bin/bower is being gently removed
+45 silly gentlyRm verifying /usr/local is an npm working directory
+46 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+47 silly gentlyRm deletion target /usr/local/bin/bower is under /usr/local
+48 verbose gentlyRm vacuuming from /usr/local/bin/bower up to /usr/local
+49 silly vacuum-fs removing /usr/local/bin/bower
+50 verbose unlock done using /home/vladimir/.npm/_locks/bower-e8debc5417026b57.lock for /usr/local/lib/node_modules/bower
+51 verbose stack Error: EACCES: permission denied, unlink '/usr/local/bin/bower'
+51 verbose stack     at Error (native)
+52 verbose cwd /home/vladimir/Documents/PraksaHtec/PythonProjects
+53 error Linux 3.13.0-62-generic
+54 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "bower"
+55 error node v4.0.0
+56 error npm  v2.14.2
+57 error path /usr/local/bin/bower
+58 error code EACCES
+59 error errno -13
+60 error syscall unlink
+61 error Error: EACCES: permission denied, unlink '/usr/local/bin/bower'
+61 error     at Error (native)
+61 error  { [Error: EACCES: permission denied, unlink '/usr/local/bin/bower']
+61 error   errno: -13,
+61 error   code: 'EACCES',
+61 error   syscall: 'unlink',
+61 error   path: '/usr/local/bin/bower' }
+62 error Please try running this command again as root/Administrator.
+63 verbose exit [ -13, true ]
+64 verbose unbuild lib/node_modules/bower
+65 info preuninstall bower@1.5.2
+66 info uninstall bower@1.5.2
+67 verbose unbuild rmStuff bower@1.5.2 from /usr/local/lib/node_modules
+68 silly gentlyRm /usr/local/bin/bower is being gently removed
+69 silly gentlyRm verifying /usr/local is an npm working directory
+70 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+71 silly gentlyRm deletion target /usr/local/bin/bower is under /usr/local
+72 verbose gentlyRm vacuuming from /usr/local/bin/bower up to /usr/local
+73 silly vacuum-fs removing /usr/local/bin/bower
+74 error error rolling back Error: EACCES: permission denied, unlink '/usr/local/bin/bower'
+74 error error rolling back     at Error (native)
+74 error error rolling back  { [Error: EACCES: permission denied, unlink '/usr/local/bin/bower']
+74 error error rolling back   errno: -13,
+74 error error rolling back   code: 'EACCES',
+74 error error rolling back   syscall: 'unlink',
+74 error error rolling back   path: '/usr/local/bin/bower' }

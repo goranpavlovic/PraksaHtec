@@ -10,14 +10,16 @@
  */
 angular
   .module('pythonProjectsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'angular-flot',
-    'smart-table'
+        'ngAnimate',
+        'ngCookies',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch',
+        'angular-flot',
+        'smart-table',
+        'nbaFilters',
+        'nbaDirectives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
