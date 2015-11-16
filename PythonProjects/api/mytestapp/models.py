@@ -249,3 +249,28 @@ class PlayersImage(models.Model):
     player_id = models.CharField(max_length=15)
     image = models.CharField(max_length=200)
 
+# -------------------------------------------------------------------------------------------------------
+# -------------------------------------------- MONGO ----------------------------------------------------
+# -------------------------------------------------------------------------------------------------------
+
+from mongoengine import *
+
+
+class Person(Document):
+    first_name = StringField()
+    last_name = StringField()
+    age = IntField()
+
+
+class Statistics(EmbeddedDocument):
+    year = IntField()
+    points = IntField()
+    rebounds = IntField()
+    minutes = IntField()
+    position = StringField()
+
+
+class Player(Document):
+    first_name = StringField()
+    last_name = StringField()
+    seasons = ListField(EmbeddedDocumentField(Statistics))

@@ -418,4 +418,6 @@ body {
 
 .text-center {
     text-align: center;
+    position: relative;
+    float: left;
 }

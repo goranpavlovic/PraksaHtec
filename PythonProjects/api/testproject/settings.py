@@ -48,10 +48,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 )
 
@@ -87,6 +87,12 @@ DATABASES = {
         'NAME': 'TestBase',
         'USER': 'root',
         'PASSWORD': 'gedelovasifra'
+    },
+    'mongo': {
+        'ENGINE': 'django_mongodb_engine',
+        'NAME': 'testing',
+        'USER': 'admin',
+        'PASSWORD': 'admin'
     }
 }
 
@@ -128,3 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+from mongoengine import connect
+
+connect('testing')

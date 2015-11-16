@@ -92,6 +92,7 @@
         <thead>
             <tr>
                 <th><!-- Empty field for checkbox--></th>
+                <th>#</th>
                 <th st-sort="all_player">Player ID</th>
                 <th st-sort="first_name">First Name</th>
                 <th st-sort="last_name">Last Name</th>
@@ -109,6 +110,7 @@
             </tr>
             <tr>
                 <th><!-- Empty field for checkbox --></th>
+                <th></th>
                 <th><!--input st-search="all_player"/--></th>
                 <th><input st-search="search_first_name" ng-model="nba.nbaAllStarSearch.firstName"></th>
                 <th><input st-search="search_last_name" ng-model="nba.nbaAllStarSearch.lastName"></th>
@@ -129,6 +131,7 @@
             <tr class="alt" ng-repeat="player in nba.nbaAllStarContext"
                             ng-click="nba.getAllStarStatistics(player.all_player)">
                 <td cs-select="player"></td>
+                <td>{{ nba.rowNumber }}</td>
                 <td>{{ player.all_player }}</td>
                 <td><span ng-bind-html="player.first_name | searchFilter:nba.nbaAllStarSearch.firstName"></span></td>
                 <td><span ng-bind-html="player.last_name | searchFilter:nba.nbaAllStarSearch.lastName"></span></td>

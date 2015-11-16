@@ -223,6 +223,13 @@ angular.module('pythonProjectsApp')
                 ]
          *
          */
+
+        self.rowNumber = 0;
+
+        self.rowNumberIncrement = function () {
+            self.rowNumber++;
+        };
+
         self.nbaAllStarContext = NBAService.nbaAllStarContext;
 
         self.nbaAllStarQuery = {

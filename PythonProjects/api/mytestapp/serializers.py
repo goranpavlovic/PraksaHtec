@@ -60,7 +60,9 @@ class AlbumSerializer(serializers.ModelSerializer):
     def get_duration_of_album(self, obj):
         duration_of_album = obj.song_set.all().aggregate(Sum('duration'))
         # return self.seconds_to_time(duration_of_album.get('duration__sum'))
-        query_string = "SELECT a.id as id, Sum(TIME_TO_SEC(s.duration)) as sum FROM usermanagement_song as s, usermanagement_album as a where s.album_id = a.id and a.id=%s"
+        query_string = "SELECT a.id as id, Sum(TIME_TO_SEC(s.duration)) as sum " \
+                       "FROM usermanagement_song as s, usermanagement_album as a " \
+                       "WHERE s.album_id = a.id and a.id=%s"
         aggregation = Song.objects.raw(query_string, [obj.id, ])
         try:
             return self.seconds_to_time(aggregation[0].sum)

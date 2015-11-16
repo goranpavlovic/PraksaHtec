@@ -1177,23 +1177,127 @@ class TeamSeasonView(APIView):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+import  json
+
 
 class TeamSeasonViewTwo(APIView):
     def get(self, request, format=None):
         rebounds = request.GET.get(u'rebounds')
+        points = request.GET.get(u'points')
 
         objects = TeamSeason.objects
 
         if rebounds is not None:
             objects = objects.filter(o_reb__gte=rebounds)
 
-        # objects = objects.values_list('year', flat=True).order_by('year')
+        if points is not None:
+            objects = objects.filter(o_pts__gte=points)
 
-        serializer = TeamSeasonSerializer(objects, many=True)
+        year_objects = objects.values_list('year', flat=True).order_by('year')
+        reb_objects = objects.values_list('o_reb', flat=True).order_by('year')
+        pts_objects = objects.values_list('o_pts', flat=True).order_by('year')
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        response = {
+            #  We must convert these lists in a really list type
+            #  because, when we get object from the database with a function values_list
+            #  it's not serializable
+            'year': list(year_objects),
+            'rebounds': list(reb_objects),
+            'points': list(pts_objects)
+        }
+
+        # Response class doesn't require serialization, because it has serialization
+        # embedded in itself, butt if we use HttpResponse we also must use json.dumps() method
+        return Response(response, status=status.HTTP_200_OK)
 
 
+from mongoengine import *
+from models import Person
 
 
+import json
+from bson import ObjectId
 
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
+
+class PersonView(APIView):
+    @staticmethod
+    def json_decode(element):
+        data = []
+        try:
+            for obj in element:
+                obj_dict = {}
+                obj_list = list(obj)
+                for item in obj_list:
+                    if isinstance(obj[item], list):
+                        # Two ways to add a object into the dictionary
+                        # obj_dict.update({item: PersonView.json_decode(obj[item])})
+                        obj_dict[item] = PersonView.json_decode(obj[item])
+                    else:
+                        # obj_dict.update({item: json.loads(JSONEncoder().encode(obj[item]))})
+                        obj_dict[item] = json.loads(JSONEncoder().encode(obj[item]))
+                data.append(obj_dict)
+
+            return data
+
+        except AssertionError:
+            return None
+
+    def post(self, request, format=None):
+        first_name = request.POST.get(u'first_name')
+        last_name = request.POST.get(u'last_name')
+        age = request.POST.get(u'age')
+
+        objects = Person()
+        objects.first_name = first_name
+        objects.last_name = last_name
+        objects.age = age
+        objects.save()
+
+        return Response(status=status.HTTP_201_CREATED,
+                        data="Person object with properties %s, %s, %s created. " %
+                             (first_name, last_name, age))
+
+    def get(self, request, format=None):
+        first_name = request.GET.get(u'first_name')
+
+        objects = Person.objects(first_name=first_name)
+
+        # data = []
+        # for obj in objects:
+        #     data.append(json.loads(JSONEncoder().encode(obj._data)))
+        data = PersonView.json_decode(objects)
+        if data is not None:
+            return Response(data=data, status=status.HTTP_200_OK)
+
+        return Response(status=status.HTTP_406_NOT_ACCEPTABLE, data='Object is not serializable')
+
+from models import Player
+from mongoengine.base import BaseDocument
+
+
+class PlayerView(APIView):
+    def get(self, request, format=None):
+        first_name = request.GET.get(u'first_name')
+        last_name = request.GET.get(u'last_name')
+
+        # collection = Player._get_collection()
+        # objects = collection.find({first_name: first_name, last_name: last_name})
+        objects = Player.objects(first_name=first_name, last_name=last_name)
+
+        # print(objects[0].first_name)
+
+        #isinstance(objects[0]['seasons'][0], BaseDocument)
+        #isinstance(objects[0], BaseDocument)
+
+        data = PersonView.json_decode(objects)
+        if data is not None:
+            return Response(data=data, status=status.HTTP_200_OK)
+
+        return Response(status=status.HTTP_406_NOT_ACCEPTABLE, data='Object is not serializable')
